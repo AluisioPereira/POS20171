@@ -1,0 +1,8 @@
+module chat{
+    interface Chat{
+	string chamar();
+	oneway void shutdown();
+    };
+};
+
+
