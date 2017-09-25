@@ -1,0 +1,1 @@
+wsimport -keep -verbose -p br.edu.ifpb.pos.biblioteca -Xnocompile http://localhost:8080/pos-soap-server-atividade4/BibliotecaService?wsdl
