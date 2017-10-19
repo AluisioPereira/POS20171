@@ -41,9 +41,17 @@ public class RepositoryAgencia {
     }
 
     public void removerAgencia(String cnpj) {
+
         TypedQuery<Agencia> q = em.createQuery("SELECT a FROM Agencia a WHERE a.cnpj=:cnpj", Agencia.class);
+        q.setParameter("cnpj", cnpj);
         Agencia agencia = q.getSingleResult();
         System.out.println("Excluindo o agencia: " + agencia.getNome());
-        em.remove(agencia);
+        removerAgenciaAlternativo(agencia);
+        //  em.remove(em.merge(agencia));
+
+    }
+
+    public void removerAgenciaAlternativo(Agencia a) {
+        em.remove(em.merge(a));
     }
 }

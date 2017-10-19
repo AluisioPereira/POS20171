@@ -5,15 +5,18 @@
  */
 package br.edu.ifpb.pos.agencia;
 
+import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.jws.WebService;
 
 /**
  *
  * @author ajp
  */
+@Stateless
 @WebService
-public class ServiceAgencia {
+public class ServiceAgencia implements Serializable  {
 
     @EJB
     private RepositoryAgencia repositoryAgencia;
@@ -22,8 +25,8 @@ public class ServiceAgencia {
         repositoryAgencia.salvarNovoAgencia(agencia);
     }
 
-    public void encontrarAgencia(String cnpj) {
-        repositoryAgencia.findAgencia(cnpj);
+    public Agencia encontrarAgencia(String cnpj) {
+        return repositoryAgencia.findAgencia(cnpj);
     }
 
     public Agencia[] listarTodasAgencia() {

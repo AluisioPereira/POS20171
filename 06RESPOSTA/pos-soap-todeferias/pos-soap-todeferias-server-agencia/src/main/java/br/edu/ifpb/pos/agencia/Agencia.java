@@ -24,15 +24,12 @@ public class Agencia implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String nome;
     private String cnpj;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<ReservaHotel> reservasHotel = new ArrayList<>();
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<ReservaPassagem> reservasPassagem = new ArrayList<>();
+    private List<Pacote> pacote = new ArrayList<>();
 
     public Agencia() {
     }
@@ -42,11 +39,11 @@ public class Agencia implements Serializable {
         this.cnpj = cnpj;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,35 +63,19 @@ public class Agencia implements Serializable {
         this.cnpj = cnpj;
     }
 
-    public List<ReservaHotel> getReservasHotel() {
-        return reservasHotel;
+    public List<Pacote> getPacote() {
+        return pacote;
     }
 
-    public void setReservasHotel(List<ReservaHotel> reservasHotel) {
-        this.reservasHotel = reservasHotel;
+    public void setPacote(List<Pacote> pacote) {
+        this.pacote = pacote;
     }
 
-    public List<ReservaPassagem> getReservasPassagem() {
-        return reservasPassagem;
+    public void addPacote(Pacote p) {
+        this.pacote.add(p);
     }
 
-    public void setReservasPassagem(List<ReservaPassagem> reservasPassagem) {
-        this.reservasPassagem = reservasPassagem;
-    }
-
-    public void addReservaHotel(ReservaHotel rh) {
-        this.reservasHotel.add(rh);
-    }
-
-    public void removeReservaHotel(ReservaHotel rh) {
-        this.reservasHotel.remove(rh);
-    }
-
-    public void addReservaPassagem(ReservaPassagem rp) {
-        this.reservasPassagem.add(rp);
-    }
-
-    public void removeReservaPassagem(ReservaPassagem rp) {
-        this.reservasPassagem.remove(rp);
+    public void removeReservaPassagem(Pacote p) {
+        this.pacote.remove(p);
     }
 }

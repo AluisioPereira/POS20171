@@ -5,9 +5,10 @@
  */
 package br.edu.ifpb.pos.agencia;
 
+import static br.edu.ifpb.pos.agencia.Pacote_.hotel;
 import br.edu.ifpb.pos.agencia.domain.ClienteId;
+import br.edu.ifpb.pos.agencia.domain.HotelId;
 import br.edu.ifpb.pos.agencia.domain.PassagemId;
-import br.edu.ifpb.pos.passagem.Passagem;
 
 /**
  *
@@ -23,7 +24,9 @@ public class Principal {
 
         PassagemId pid = new PassagemId("01.111.0001/22");
 
-        ReservaPassagem rp = new ReservaPassagem(cid, pid);
+        HotelId hid = new HotelId("01.111.0001/22");
+
+        Pacote rp = new Pacote(cid, hid, pid);
 
     }
 }

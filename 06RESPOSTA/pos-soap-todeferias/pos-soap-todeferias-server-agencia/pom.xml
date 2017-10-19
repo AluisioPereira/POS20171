@@ -20,6 +20,16 @@
     </properties>
     
     <dependencies>
+        
+        <!-- CDI -->
+        <dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet</artifactId>
+            <version>2.3.5.Final</version>
+        </dependency>
+        
+        
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -89,11 +99,20 @@
             </plugin>
             
             
+            
+            
+           
+            
+            
+            
             <plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.3</version> 
                 <executions>
+                
+                
+            <!-- comentario
                     <execution>
                         <id>cliente</id>
                         <phase>generate-sources</phase>
@@ -165,7 +184,10 @@
                             </vmArgs>
                         </configuration>
                     </execution>
-                                        
+                   
+            
+            
+            -->            
                     
                 </executions>
                 <dependencies>
@@ -177,7 +199,7 @@
                 </dependencies>
             </plugin>
             
-            
+           
             
             
         </plugins>
