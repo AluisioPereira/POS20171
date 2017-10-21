@@ -13,31 +13,30 @@ import javax.persistence.Embeddable;
  *
  * @author ajp
  */
-
 @Embeddable
 public class HotelId implements Serializable {
 
-    private String cnpj;
+    private String cnpjHotel;
 
     public HotelId() {
     }
 
-    public HotelId(String cnpj) {
-        this.cnpj = cnpj;
+    public HotelId(String cnpjHotel) {
+        this.cnpjHotel = cnpjHotel;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getCnpjHotel() {
+        return cnpjHotel;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCnpjHotel(String cnpjHotel) {
+        this.cnpjHotel = cnpjHotel;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.cnpj);
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.cnpjHotel);
         return hash;
     }
 
@@ -53,9 +52,10 @@ public class HotelId implements Serializable {
             return false;
         }
         final HotelId other = (HotelId) obj;
-        if (!Objects.equals(this.cnpj, other.cnpj)) {
+        if (!Objects.equals(this.cnpjHotel, other.cnpjHotel)) {
             return false;
         }
         return true;
     }
+
 }

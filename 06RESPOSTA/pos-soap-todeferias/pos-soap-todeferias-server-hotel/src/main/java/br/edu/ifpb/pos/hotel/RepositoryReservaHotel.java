@@ -26,9 +26,9 @@ public class RepositoryReservaHotel {
         em.persist(rh);
     }
 
-    public ReservaHotel findReservaHotel(String id) {
+    public ReservaHotel findReservaHotel(String codigo) {
         TypedQuery<ReservaHotel> q = em.createQuery("SELECT rh FROM reservahotel rh WHERE rh.codigo=:codigo", ReservaHotel.class);
-        q.setParameter("codigo", id);
+        q.setParameter("codigo", codigo);
         return q.getSingleResult();
     }
 

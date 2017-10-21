@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.pos.agencia;
 
+import br.edu.ifpb.pos.agencia.domain.AgenciaId;
 import br.edu.ifpb.pos.agencia.domain.ClienteId;
 import br.edu.ifpb.pos.agencia.domain.HotelId;
 import br.edu.ifpb.pos.agencia.domain.PassagemId;
@@ -16,16 +17,16 @@ import br.edu.ifpb.pos.agencia.domain.PassagemId;
 public class Principal {
 
     public static void main(String[] args) {
-//        ServiceClienteService proxy = new ServiceClienteService();
-//        ServiceCliente service = proxy.getServiceClientePort();
-
+        String codigo = "234##234";
         ClienteId cid = new ClienteId("111.222.333-44");
 
         PassagemId pid = new PassagemId("01.111.0001/22");
 
         HotelId hid = new HotelId("01.111.0001/22");
 
-        Pacote rp = new Pacote(cid, hid, pid);
+        AgenciaId aid = new AgenciaId("01.111.0001/22");
+
+        Pacote rp = new Pacote(codigo, cid, hid, pid, aid);
 
     }
 }

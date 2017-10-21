@@ -5,11 +5,13 @@
  */
 package br.edu.ifpb.pos.agencia;
 
+import br.edu.ifpb.pos.agencia.domain.AgenciaId;
 import br.edu.ifpb.pos.agencia.domain.ClienteId;
 import br.edu.ifpb.pos.agencia.domain.HotelId;
 import br.edu.ifpb.pos.agencia.domain.PassagemId;
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,10 +25,18 @@ public class Pacote implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long id;    
+    private Long id;
+    
+    @Column(name="codigo")
+    private String codigo;
+    @Column(name="cliente")
     private ClienteId cliente;
+    @Column(name="hotel")
     private HotelId hotel;
+    @Column(name="passagem")
     private PassagemId passagem;
+    @Column(name="agencia")
+    private AgenciaId agencia;
 
     public Pacote() {
     }
@@ -35,6 +45,30 @@ public class Pacote implements Serializable {
         this.cliente = cliente;
         this.hotel = hotel;
         this.passagem = passagem;
+    }
+
+    public Pacote(String codigo, ClienteId cliente, HotelId hotel, PassagemId passagem, AgenciaId agencia) {
+        this.codigo = codigo;
+        this.cliente = cliente;
+        this.hotel = hotel;
+        this.passagem = passagem;
+        this.agencia = agencia;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public AgenciaId getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(AgenciaId agencia) {
+        this.agencia = agencia;
     }
 
     public Long getId() {
@@ -71,11 +105,13 @@ public class Pacote implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.cliente);
-        hash = 29 * hash + Objects.hashCode(this.hotel);
-        hash = 29 * hash + Objects.hashCode(this.passagem);
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.codigo);
+        hash = 67 * hash + Objects.hashCode(this.cliente);
+        hash = 67 * hash + Objects.hashCode(this.hotel);
+        hash = 67 * hash + Objects.hashCode(this.passagem);
+        hash = 67 * hash + Objects.hashCode(this.agencia);
         return hash;
     }
 
@@ -91,6 +127,9 @@ public class Pacote implements Serializable {
             return false;
         }
         final Pacote other = (Pacote) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -100,14 +139,13 @@ public class Pacote implements Serializable {
         if (!Objects.equals(this.hotel, other.hotel)) {
             return false;
         }
+        if (!Objects.equals(this.passagem, other.passagem)) {
+            return false;
+        }
+        if (!Objects.equals(this.agencia, other.agencia)) {
+            return false;
+        }
         return true;
-    }
-
-    
-
-    @Override
-    public String toString() {
-        return "Pacote{" + "id=" + id + ", cliente=" + cliente + ", hotel=" + hotel + ", passagem=" + passagem + '}';
     }
 
 }

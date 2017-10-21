@@ -75,7 +75,7 @@ public class Agencia implements Serializable {
         this.pacote.add(p);
     }
 
-    public void removeReservaPassagem(Pacote p) {
+    public void removePacote(Pacote p) {
         this.pacote.remove(p);
     }
 }

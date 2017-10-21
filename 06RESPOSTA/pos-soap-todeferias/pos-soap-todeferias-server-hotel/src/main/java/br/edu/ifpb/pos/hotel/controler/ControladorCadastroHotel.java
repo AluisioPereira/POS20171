@@ -180,7 +180,7 @@ public class ControladorCadastroHotel implements Serializable {
     
     
     public String removerReservaHotel(ReservaHotel rh) {
-        System.err.println("controle" + rh);
+        System.err.println("controle" + rh.getCodigo());
         hotel.removeReservaHotel(rh); 
         servicoHotel.atualizarHotel(hotel);
         servicoReservaHotel.removerReservaHotel(rh);
