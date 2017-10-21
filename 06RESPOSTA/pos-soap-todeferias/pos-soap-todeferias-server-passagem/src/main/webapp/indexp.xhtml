@@ -14,17 +14,18 @@
                     <legend>Nova Reserva Passagem</legend>
 
                     <!-- Text input-->
+                    <div class="form-group " rows="3">
+                        <label class="col-sm-3 control-label" for="codigo">Código da Reserva</label>
+
+                        <h:inputText value="#{controladorCadastroPassagem.codigo}" id="codigo1"  class="form-control input-md" required="true" />
+                    </div>
 
                     <div class="form-group " rows="3">
                         <label class="col-sm-3 control-label" for="cpf">CPF do cliente</label>
 
-                        <h:inputText value="#{controladorCadastroPassagem.reservaPassagem.cliente}" id="cliente1"  class="form-control input-md" required="true" />
+                        <h:inputText value="#{controladorCadastroPassagem.clienteId.cpf}" id="cliente1"  class="form-control input-md" required="true" />
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="cnpj1">CNPJ da Empresa de Passagem</label>
-                        <h:inputText value="#{controladorCadastroPassagem.reservaPassagem.passagem}" id="passagem1"  class="form-control input-md" required="true"/>
-                    </div>
 
                     <div class="form-group">
                         <h:commandButton action="#{controladorCadastroPassagem.cadastrarRH()}" value="Cadastrar" styleClass="btn btn-success" />

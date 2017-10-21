@@ -24,7 +24,7 @@ public class ServiceReservaPassagem {
         repositoryReservaPassagem.salvarNovoReservaPassagem(reservaPassagem);
     }
 
-    public ReservaPassagem encontrarReservaPassagem(Long id) {
+    public ReservaPassagem encontrarReservaPassagem(String id) {
         return repositoryReservaPassagem.findReservaPassagem(id);
     }
 
@@ -33,17 +33,17 @@ public class ServiceReservaPassagem {
     }
     
     
-    public List<ReservaPassagem> listarReservaPassagemPorPassagem(Long id) {
-        return repositoryReservaPassagem.listarReservaPassagemPorPassagem(id);
-    }
+//    public List<ReservaPassagem> listarReservaPassagemPorPassagem(String id) {
+//        return repositoryReservaPassagem.listarReservaPassagemPorPassagem(id);
+//    }
     
 
     public void atualizarReservaPassagem(ReservaPassagem reservaPassagem) {
         repositoryReservaPassagem.atualizarReservaPassagem(reservaPassagem);
     }
 
-    public void removerReservaPassagem(Long id) {
-        repositoryReservaPassagem.removerReservaPassagem(id);
+    public void removerReservaPassagem(ReservaPassagem rp) {
+        repositoryReservaPassagem.removerReservaPassagem(rp);
     }
     
 }

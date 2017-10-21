@@ -9,9 +9,12 @@ import br.edu.ifpb.pos.passagem.Passagem;
 import br.edu.ifpb.pos.passagem.ReservaPassagem;
 import br.edu.ifpb.pos.passagem.ServicePassagem;
 import br.edu.ifpb.pos.passagem.ServiceReservaPassagem;
+import br.edu.ifpb.pos.passagem.domain.ClienteId;
+import br.edu.ifpb.pos.passagem.domain.PassagemId;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.inject.Named;
 
@@ -33,6 +36,12 @@ public class ControladorCadastroPassagem implements Serializable {
     @EJB
     private ServiceReservaPassagem servicoReservaPassagem;
 
+    private ClienteId clienteId;
+
+    private PassagemId passagemId;
+    
+    private String codigo;
+
     public String novaPassagem() {
         String url;
         url = "index?faces-redirect=true";
@@ -43,7 +52,10 @@ public class ControladorCadastroPassagem implements Serializable {
     public String novoReservaPassagem() {
         String url;
         url = "indexp?faces-redirect=true";
-        reservaPassagem = new ReservaPassagem();
+        reservaPassagem = new ReservaPassagem();       
+        codigo = new String();
+        clienteId = new ClienteId();
+        passagemId = new PassagemId(passagemId.getCnpjEmpresa());
         return url;
     }
 
@@ -60,29 +72,24 @@ public class ControladorCadastroPassagem implements Serializable {
         return url;
     }
 
-    public String cadastrarRH1() {
+    public String cadastrarRH() {
         String url;
         if (this.reservaPassagem.getId() == null) {
+            this.reservaPassagem = new ReservaPassagem(codigo, clienteId, passagemId);
             this.servicoReservaPassagem.salvarReservaPassagem(reservaPassagem);
+            this.servicoPassagem.atualizarPassagem(passagem);
+
+            if (this.passagem.getId() == null) {
+                this.servicoPassagem.salvarPassagem(passagem);
+            } else {
+                this.passagem.addPassagem(reservaPassagem);
+                servicoPassagem.atualizarPassagem(passagem);
+            }
             url = "indexp?faces-redirect=true";
         } else {
             servicoReservaPassagem.atualizarReservaPassagem(reservaPassagem);
         }
         url = "gerenciamento?faces-redirect=true";
-        reservaPassagem = new ReservaPassagem();
-        return url;
-    }
-
-    public String cadastrarRH() {
-        String url;
-        if (this.reservaPassagem.getId() == null) {
-            this.servicoReservaPassagem.salvarReservaPassagem(reservaPassagem);
-            this.servicoPassagem.atualizarPassagem(passagem);
-            url = "informacoes?faces-redirect=true";
-        } else {
-            servicoReservaPassagem.atualizarReservaPassagem(reservaPassagem);
-        }
-        url = "indexp?faces-redirect=true";
         reservaPassagem = new ReservaPassagem();
         return url;
     }
@@ -113,9 +120,9 @@ public class ControladorCadastroPassagem implements Serializable {
 
     }
 
-    public List<ReservaPassagem> listarReservaPassagemPorPassagem(Long id) {
-        return servicoReservaPassagem.listarReservaPassagemPorPassagem(id);
-    }
+//    public List<ReservaPassagem> listarReservaPassagemPorPassagem(Long id) {
+//        return servicoReservaPassagem.listarReservaPassagemPorPassagem(id);
+//    }
 
     public String atualizar(String cnpj) {
         passagem = consultar(cnpj);
@@ -126,8 +133,8 @@ public class ControladorCadastroPassagem implements Serializable {
         }
     }
 
-    public String atualizarReservaPassagem(Long id) {
-        reservaPassagem = consultarReservaPassagem(id);
+    public String atualizarReservaPassagem(ReservaPassagem rp) {
+        reservaPassagem = rp;
         if (reservaPassagem != null) {
             return "editarp.xhtml?faces-redirect=true";
         } else {
@@ -139,17 +146,18 @@ public class ControladorCadastroPassagem implements Serializable {
         return servicoPassagem.encontrarPassagem(codigo);
     }
 
-    public ReservaPassagem consultarReservaPassagem(Long id) {
+    public ReservaPassagem consultarReservaPassagem(String id) {
         return servicoReservaPassagem.encontrarReservaPassagem(id);
     }
 
     public String mostraPassagem(String id) {
-       passagem = servicoPassagem.encontrarPassagem(id);
+        passagem = servicoPassagem.encontrarPassagem(id);
+        passagemId = new PassagemId(id);
         return "informacoes";
     }
 
-    public String mostraReservaPassagem(Long id) {
-        reservaPassagem = servicoReservaPassagem.encontrarReservaPassagem(id);
+    public String mostraReservaPassagem(ReservaPassagem rp) {
+        reservaPassagem = rp;
         return "informacoesp";
     }
 
@@ -168,9 +176,12 @@ public class ControladorCadastroPassagem implements Serializable {
         return null;
     }
 
-    public String removerReservaPassagem(Long id) {
-        System.err.println("controle" + id);
-        servicoReservaPassagem.removerReservaPassagem(id);
+    public String removerReservaPassagem(ReservaPassagem rp) {
+        System.err.println("controle" + rp);
+        passagem.removePassagem(rp); 
+        servicoPassagem.atualizarPassagem(passagem);
+        servicoReservaPassagem.removerReservaPassagem(rp);
+        
         return null;
     }
 
@@ -204,6 +215,32 @@ public class ControladorCadastroPassagem implements Serializable {
 
     public void setServicoReservaPassagem(ServiceReservaPassagem servicoReservaPassagem) {
         this.servicoReservaPassagem = servicoReservaPassagem;
+    }
+
+    public ClienteId getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(ClienteId clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public PassagemId getPassagemId() {
+        return passagemId;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
+        
+
+    public void setPassagemId(PassagemId passagemId) {
+        this.passagemId = passagemId;
     }
 
     public void limparCampos() {

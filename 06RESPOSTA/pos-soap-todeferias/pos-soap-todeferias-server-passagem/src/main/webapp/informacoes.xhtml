@@ -9,41 +9,45 @@
         <ui:define name="content">
             <h3>Informações da Passagem</h3>
             <hr></hr>
-            <h1><strong><h:outputLabel for="nome" value="#{controladorCadastroPassagem.passagem.cnpjEmpresa}"/></strong></h1>
+            <h1><strong><h:outputLabel for="cnpjEmpresa" id="cnpjEmpresa" value="#{controladorCadastroPassagem.passagem.cnpjEmpresa}"/></strong></h1>
             <br></br>
             <br></br>
-            Numero da Poutrona: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.numeroPoutrona}"/><br></br>
-
-            
-            
-            Cidade de Origem: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.origem}"/><br></br>
+            Numero da Poutrona: <h:outputLabel for="numeroPoutrona" id="numeroPoutrona" value="#{controladorCadastroPassagem.passagem.numeroPoutrona}"/><br></br>
 
 
-            Data e Hora de Saída: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.dataHoraSaida}"/><br></br>
 
-            Cidade de Destino: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.destino}"/><br></br>
+            Cidade de Origem: <h:outputLabel for="origem" id="origem" value="#{controladorCadastroPassagem.passagem.origem}"/><br></br>
 
-            Data e Hora de Chegada: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.dataHoraChegada}"/><br></br>
 
-            
-            
-            
-            
+            Data e Hora de Saída: <h:outputLabel for="dataHoraSaida" id="dataHoraSaida" value="#{controladorCadastroPassagem.passagem.dataHoraSaida}"/><br></br>
+
+            Cidade de Destino: <h:outputLabel for="destino" id="destino" value="#{controladorCadastroPassagem.passagem.destino}"/><br></br>
+
+            Data e Hora de Chegada: <h:outputLabel for="dataHoraChegada" id="dataHoraChegada" value="#{controladorCadastroPassagem.passagem.dataHoraChegada}"/><br></br>
+
+
+
+
             <br></br>
             <h2>Recerva(s) para a Passagem:</h2>
             <h:form>
-                <h:commandButton action="#{controladorCadastroPassagem.novoReservaPassagem()}" styleClass="btn btn-success btn-xs" value="NOVO RESERVA"/>
+                <h:commandButton action="#{controladorCadastroPassagem.novoReservaPassagem()}" styleClass="btn btn-success btn-xs" value="NOVA RESERVA"/>
             </h:form>
 
             <hr/>
 
             <h:dataTable value="#{controladorCadastroPassagem.passagem.reservas}" var="reserva" styleClass="table table-striped" cellspacing="3" cellpadding="3" >
                 <h:column>
-                    <f:facet name="header">Cliente</f:facet>
+                    <f:facet name="header">Código da Reserva</f:facet>
+                        #{reserva.codigo}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">CPF do Cliente</f:facet>
                         #{reserva.cliente.cpf}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">CNPJ da Empresa Passagem</f:facet>
+                    <f:facet name="header">Código da Passagem</f:facet>
                         #{reserva.passagem.cnpjEmpresa}
                 </h:column>
                 <h:column>
@@ -51,7 +55,7 @@
                         <!-- <h:outputText value="Excluir"/>-->
                     </f:facet>
                     <h:form>
-                        <h:commandButton action="#{controladorCadastroPassagem.mostraReservaPassagem(reserva.id)}" styleClass="btn btn-primary btn-xs" value="Detalhes"/>
+                        <h:commandButton action="#{controladorCadastroPassagem.mostraReservaPassagem(reserva)}" styleClass="btn btn-primary btn-xs" value="Detalhes"/>
                     </h:form>
                 </h:column>
                 <h:column>
@@ -59,8 +63,7 @@
                         <!-- <h:outputText value="Excluir"/>-->
                     </f:facet>
                     <h:form>
-
-                        <h:commandButton action="#{controladorCadastroPassagem.mostraReservaPassagem(reserva.id)}" styleClass="btn btn-warning btn-xs" value="Editar"/>
+                        <h:commandButton action="#{controladorCadastroPassagem.atualizarReservaPassagem(reserva)}" styleClass="btn btn-warning btn-xs" value="Editar"/>
                     </h:form>
                 </h:column>
                 <h:column>
@@ -68,7 +71,7 @@
                         <!-- <h:outputText value="Excluir"/>-->
                     </f:facet>
                     <h:form>
-                        <h:commandButton action="#{controladorCadastroPassagem.mostraReservaPassagem(reserva.id)}" styleClass="btn btn-danger btn-xs" value="Excluir"/>
+                        <h:commandButton action="#{controladorCadastroPassagem.removerReservaPassagem(reserva)}" styleClass="btn btn-danger btn-xs" value="Excluir"/>
                     </h:form>
                 </h:column>
 

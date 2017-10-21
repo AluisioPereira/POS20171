@@ -26,8 +26,8 @@ public class RepositoryPassagem {
     }
 
     public Passagem findPassagem(String cnpjEmpresa) {
-        TypedQuery<Passagem> q = em.createQuery("SELECT p FROM Passagem p WHERE p.cnpjempresa=:cnpjempresa", Passagem.class);
-        q.setParameter("codigo", cnpjEmpresa);
+        TypedQuery<Passagem> q = em.createQuery("SELECT p FROM Passagem p WHERE p.cnpjEmpresa=:cnpjEmpresa", Passagem.class);
+        q.setParameter("cnpjEmpresa", cnpjEmpresa);
         return q.getSingleResult();
     }
 
@@ -40,10 +40,15 @@ public class RepositoryPassagem {
         em.merge(Passagem);
     }
 
-    public void removerPassagem(String codigo) {
-        TypedQuery<Passagem> q = em.createQuery("SELECT p FROM Passagem p WHERE p.cnpjempresa=:cnpjempresa", Passagem.class);
+    public void removerPassagem(String cnpjEmpresa) {
+        TypedQuery<Passagem> q = em.createQuery("SELECT p FROM Passagem p WHERE p.cnpjEmpresa=:cnpjEmpresa", Passagem.class);
+        q.setParameter("cnpjEmpresa", cnpjEmpresa);
         Passagem passagem = q.getSingleResult();
         System.out.println("Excluindo o passagem: " + passagem.getCnpjEmpresa());
-        em.remove(passagem);
+        removerPassagemAlternativo(passagem);
+    }
+
+    public void removerPassagemAlternativo(Passagem p) {
+        em.remove(em.merge(p));
     }
 }
