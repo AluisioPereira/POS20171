@@ -34,7 +34,7 @@ public class Principal {
 
         ReservaHotel rh = new ReservaHotel(cid, hid);
 
-        h.addReserva(rh);
+        h.addReservaHotel(rh);
 
 //      ServiceHotel sh = new ServiceHotel();
 //      RepositoryHotel rh = new RepositoryHotel();

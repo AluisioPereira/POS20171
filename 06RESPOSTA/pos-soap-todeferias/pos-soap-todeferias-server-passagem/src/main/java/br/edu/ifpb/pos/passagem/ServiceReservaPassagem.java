@@ -5,7 +5,6 @@
  */
 package br.edu.ifpb.pos.passagem;
 
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebService;

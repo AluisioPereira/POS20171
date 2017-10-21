@@ -14,7 +14,6 @@ import br.edu.ifpb.pos.passagem.domain.PassagemId;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import javax.ejb.EJB;
 import javax.inject.Named;
 

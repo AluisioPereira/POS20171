@@ -71,11 +71,11 @@ public class Hotel implements Serializable {
         this.reservas = reservas;
     }
 
-    public void addReserva(ReservaHotel rh) {
+    public void addReservaHotel(ReservaHotel rh) {
         this.reservas.add(rh);
     }
 
-    public void removeReserva(ReservaHotel rh) {
+    public void removeReservaHotel(ReservaHotel rh) {
         this.reservas.remove(rh);
     }
 }

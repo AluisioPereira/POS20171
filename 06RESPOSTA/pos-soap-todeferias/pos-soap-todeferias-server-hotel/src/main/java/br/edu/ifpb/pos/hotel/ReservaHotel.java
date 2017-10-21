@@ -9,14 +9,9 @@ import br.edu.ifpb.pos.hotel.domain.ClienteId;
 import br.edu.ifpb.pos.hotel.domain.HotelId;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -28,12 +23,11 @@ public class ReservaHotel implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    @Embedded
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    
+    private String codigo;
+    
     private ClienteId cliente;
 
-    @Embedded
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private HotelId hotel;
 
     public ReservaHotel() {
@@ -43,6 +37,21 @@ public class ReservaHotel implements Serializable {
         this.cliente = cliente;
         this.hotel = hotel;
     }
+
+    public ReservaHotel(String codigo, ClienteId cliente, HotelId hotel) {
+        this.codigo = codigo;
+        this.cliente = cliente;
+        this.hotel = hotel;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
 
     public Long getId() {
         return id;
@@ -67,13 +76,17 @@ public class ReservaHotel implements Serializable {
     public void setHotel(HotelId hotel) {
         this.hotel = hotel;
     }
+    
+    
+    
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.id);
-        hash = 17 * hash + Objects.hashCode(this.cliente);
-        hash = 17 * hash + Objects.hashCode(this.hotel);
+        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.codigo);
+        hash = 79 * hash + Objects.hashCode(this.cliente);
+        hash = 79 * hash + Objects.hashCode(this.hotel);
         return hash;
     }
 
@@ -89,6 +102,9 @@ public class ReservaHotel implements Serializable {
             return false;
         }
         final ReservaHotel other = (ReservaHotel) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -100,5 +116,7 @@ public class ReservaHotel implements Serializable {
         }
         return true;
     }
+
+  
 
 }

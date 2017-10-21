@@ -26,9 +26,9 @@ public class RepositoryReservaHotel {
         em.persist(rh);
     }
 
-    public ReservaHotel findReservaHotel(Long id) {
-        TypedQuery<ReservaHotel> q = em.createQuery("SELECT rh FROM reservahotel rh WHERE rh.id=:id", ReservaHotel.class);
-        q.setParameter("id", id);
+    public ReservaHotel findReservaHotel(String id) {
+        TypedQuery<ReservaHotel> q = em.createQuery("SELECT rh FROM reservahotel rh WHERE rh.codigo=:codigo", ReservaHotel.class);
+        q.setParameter("codigo", id);
         return q.getSingleResult();
     }
 
@@ -36,36 +36,13 @@ public class RepositoryReservaHotel {
         List<ReservaHotel> resultList = em.createQuery("FROM reservahotel rh").getResultList();
         return resultList.toArray(new ReservaHotel[0]);
     }
-    
-    
-     public List<ReservaHotel> listarReservaHotelPorHotel(Long id) {
-        List<Long> resultListp = em.createQuery("FROM hotel_reservahotel ap").getResultList();
-        List<ReservaHotel> ap = new ArrayList<>();
-        for (Long long1 : resultListp) {
-            ap.add(findReservaHotel(long1));
-        }
-        return ap;
-    }
-    
 
     public void atualizarReservaHotel(ReservaHotel rh) {
         em.merge(rh);
     }
 
-    public void removerReservaHotel(Long id) {
-        TypedQuery<ReservaHotel> q = em.createQuery("SELECT rh FROM ReservaHotel rh WHERE rh.id=:id", ReservaHotel.class);
-        q.setParameter("id", id);
-        ReservaHotel rh = q.getSingleResult();
-        System.out.println("Excluindo o ReservaHotel: " + rh.getId());
-        removerReservaHotelAlternativo(rh);
+    public void removerReservaHotel(ReservaHotel reservaHotel) {
+        em.remove(em.merge(reservaHotel));
     }
-    
-
-    public void removerReservaHotelAlternativo(ReservaHotel h) {
-        em.remove(em.merge(h));
-    }
-    
-    
-    
 
 }

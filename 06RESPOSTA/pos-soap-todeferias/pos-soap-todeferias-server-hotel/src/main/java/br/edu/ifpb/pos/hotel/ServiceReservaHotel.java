@@ -5,7 +5,6 @@
  */
 package br.edu.ifpb.pos.hotel;
 
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
@@ -24,7 +23,7 @@ public class ServiceReservaHotel {
         repositoryReservaHotel.salvarNovoReservaHotel(reservaHotel);
     }
 
-    public ReservaHotel encontrarReservaHotel(Long id) {
+    public ReservaHotel encontrarReservaHotel(String id) {
         return repositoryReservaHotel.findReservaHotel(id);
     }
 
@@ -32,17 +31,14 @@ public class ServiceReservaHotel {
         return repositoryReservaHotel.todasOsReservaHotel();
     }
     
-    
-    public List<ReservaHotel> listarReservaHotelPorHotel(Long id) {
-        return repositoryReservaHotel.listarReservaHotelPorHotel(id);
-    }
-    
+  
 
     public void atualizarReservaHotel(ReservaHotel reservaHotel) {
         repositoryReservaHotel.atualizarReservaHotel(reservaHotel);
     }
 
-    public void removerReservaHotel(Long id) {
+    
+    public void removerReservaHotel(ReservaHotel id) {
         repositoryReservaHotel.removerReservaHotel(id);
     }
     

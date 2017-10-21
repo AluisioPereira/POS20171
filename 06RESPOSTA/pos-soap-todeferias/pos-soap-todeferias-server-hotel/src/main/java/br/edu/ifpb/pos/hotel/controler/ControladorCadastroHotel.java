@@ -9,6 +9,8 @@ import br.edu.ifpb.pos.hotel.Hotel;
 import br.edu.ifpb.pos.hotel.ReservaHotel;
 import br.edu.ifpb.pos.hotel.ServiceHotel;
 import br.edu.ifpb.pos.hotel.ServiceReservaHotel;
+import br.edu.ifpb.pos.hotel.domain.ClienteId;
+import br.edu.ifpb.pos.hotel.domain.HotelId;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
@@ -32,6 +34,14 @@ public class ControladorCadastroHotel implements Serializable {
 
     @EJB
     private ServiceReservaHotel servicoReservaHotel;
+    
+    
+    
+    private ClienteId clienteId;
+
+    private HotelId hotelId;
+    
+    private String codigo;
 
     public String novaHotel() {
         String url;
@@ -44,6 +54,10 @@ public class ControladorCadastroHotel implements Serializable {
         String url;
         url = "indexp?faces-redirect=true";
         reservaHotel = new ReservaHotel();
+        codigo = new String();
+        clienteId = new ClienteId();
+        hotelId = new HotelId(hotelId.getCnpj());
+        
         return url;
     }
 
@@ -60,29 +74,24 @@ public class ControladorCadastroHotel implements Serializable {
         return url;
     }
 
-    public String cadastrarRH1() {
+   public String cadastrarRH() {
         String url;
         if (this.reservaHotel.getId() == null) {
+            this.reservaHotel = new ReservaHotel(codigo, clienteId, hotelId);
             this.servicoReservaHotel.salvarReservaHotel(reservaHotel);
+            this.servicoHotel.atualizarHotel(hotel);
+
+            if (this.hotel.getId() == null) {
+                this.servicoHotel.salvarHotel(hotel);
+            } else {
+                this.hotel.addReservaHotel(reservaHotel);
+                servicoHotel.atualizarHotel(hotel);
+            }
             url = "indexp?faces-redirect=true";
         } else {
             servicoReservaHotel.atualizarReservaHotel(reservaHotel);
         }
         url = "gerenciamento?faces-redirect=true";
-        reservaHotel = new ReservaHotel();
-        return url;
-    }
-
-    public String cadastrarRH() {
-        String url;
-        if (this.reservaHotel.getId() == null) {
-            this.servicoReservaHotel.salvarReservaHotel(reservaHotel);
-            this.servicoHotel.atualizarHotel(hotel);
-            url = "informacoes?faces-redirect=true";
-        } else {
-            servicoReservaHotel.atualizarReservaHotel(reservaHotel);
-        }
-        url = "indexp?faces-redirect=true";
         reservaHotel = new ReservaHotel();
         return url;
     }
@@ -113,9 +122,7 @@ public class ControladorCadastroHotel implements Serializable {
 
     }
 
-    public List<ReservaHotel> listarReservaHotelPorHotel(Long id) {
-        return servicoReservaHotel.listarReservaHotelPorHotel(id);
-    }
+
 
     public String atualizar(String cnpj) {
         hotel = consultar(cnpj);
@@ -126,8 +133,8 @@ public class ControladorCadastroHotel implements Serializable {
         }
     }
 
-    public String atualizarReservaHotel(Long id) {
-        reservaHotel = consultarReservaHotel(id);
+    public String atualizarReservaHotel(ReservaHotel rh) {
+        reservaHotel = rh;
         if (reservaHotel != null) {
             return "editarp.xhtml?faces-redirect=true";
         } else {
@@ -139,19 +146,22 @@ public class ControladorCadastroHotel implements Serializable {
         return servicoHotel.encontrarHotel(cnpj);
     }
 
-    public ReservaHotel consultarReservaHotel(Long id) {
+    public ReservaHotel consultarReservaHotel(String id) {
         return servicoReservaHotel.encontrarReservaHotel(id);
     }
 
     public String mostraHotel(String id) {
         hotel = servicoHotel.encontrarHotel(id);
+        hotelId = new HotelId(id);
         return "informacoes";
     }
 
-    public String mostraReservaHotel(Long id) {
-        reservaHotel = servicoReservaHotel.encontrarReservaHotel(id);
+    public String mostraReservaHotel(ReservaHotel rh) {
+        reservaHotel = rh;
         return "informacoesp";
     }
+    
+    
 
     public String mostraInformacoes(String id) {
         hotel = servicoHotel.encontrarHotel(id);
@@ -167,12 +177,17 @@ public class ControladorCadastroHotel implements Serializable {
         servicoHotel.removerHotel(cnpj);
         return null;
     }
-
-    public String removerReservaHotel(Long id) {
-        System.err.println("controle" + id);
-        servicoReservaHotel.removerReservaHotel(id);
+    
+    
+    public String removerReservaHotel(ReservaHotel rh) {
+        System.err.println("controle" + rh);
+        hotel.removeReservaHotel(rh); 
+        servicoHotel.atualizarHotel(hotel);
+        servicoReservaHotel.removerReservaHotel(rh);
+        
         return null;
     }
+
 
     public Hotel getHotel() {
         return hotel;
@@ -205,6 +220,33 @@ public class ControladorCadastroHotel implements Serializable {
     public void setServicoReservaHotel(ServiceReservaHotel servicoReservaHotel) {
         this.servicoReservaHotel = servicoReservaHotel;
     }
+
+    public ClienteId getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(ClienteId clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public HotelId getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(HotelId hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
+    
+    
 
     public void limparCampos() {
         this.hotel = new Hotel();
