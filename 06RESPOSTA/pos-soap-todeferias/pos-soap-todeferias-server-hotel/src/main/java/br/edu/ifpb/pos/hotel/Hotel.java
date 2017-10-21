@@ -24,7 +24,7 @@ public class Hotel implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String nome;
     private String cnpj;
 
@@ -39,11 +39,11 @@ public class Hotel implements Serializable {
         this.cnpj = cnpj;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

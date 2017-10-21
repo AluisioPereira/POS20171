@@ -6,12 +6,14 @@
 package br.edu.ifpb.pos.passagem;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.jws.WebService;
 
 /**
  *
  * @author ajp
  */
+@Stateless
 @WebService
 public class ServicePassagem {
 
@@ -22,8 +24,8 @@ public class ServicePassagem {
         repositoryPassagem.salvarNovoPassagem(passagem);
     }
 
-    public void encontrarPassagem(String codigo) {
-        repositoryPassagem.findPassagem(codigo);
+    public Passagem encontrarPassagem(String codigo) {
+        return repositoryPassagem.findPassagem(codigo);
     }
 
     public Passagem[] listarTodasPassagem() {

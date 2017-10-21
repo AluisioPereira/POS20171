@@ -36,8 +36,8 @@ public class HotelId implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.cnpj);
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.cnpj);
         return hash;
     }
 
@@ -58,4 +58,8 @@ public class HotelId implements Serializable {
         }
         return true;
     }
+
+   
+    
+    
 }

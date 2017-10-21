@@ -5,7 +5,6 @@
  */
 package br.edu.ifpb.pos.agencia;
 
-import static br.edu.ifpb.pos.agencia.Pacote_.hotel;
 import br.edu.ifpb.pos.agencia.domain.ClienteId;
 import br.edu.ifpb.pos.agencia.domain.HotelId;
 import br.edu.ifpb.pos.agencia.domain.PassagemId;

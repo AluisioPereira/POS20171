@@ -8,9 +8,15 @@ package br.edu.ifpb.pos.hotel;
 import br.edu.ifpb.pos.hotel.domain.ClienteId;
 import br.edu.ifpb.pos.hotel.domain.HotelId;
 import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,10 +27,13 @@ public class ReservaHotel implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
-
+    private Long id;
+    @Embedded
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private ClienteId cliente;
 
+    @Embedded
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private HotelId hotel;
 
     public ReservaHotel() {
@@ -35,11 +44,11 @@ public class ReservaHotel implements Serializable {
         this.hotel = hotel;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,6 +66,39 @@ public class ReservaHotel implements Serializable {
 
     public void setHotel(HotelId hotel) {
         this.hotel = hotel;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.id);
+        hash = 17 * hash + Objects.hashCode(this.cliente);
+        hash = 17 * hash + Objects.hashCode(this.hotel);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ReservaHotel other = (ReservaHotel) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.cliente, other.cliente)) {
+            return false;
+        }
+        if (!Objects.equals(this.hotel, other.hotel)) {
+            return false;
+        }
+        return true;
     }
 
 }

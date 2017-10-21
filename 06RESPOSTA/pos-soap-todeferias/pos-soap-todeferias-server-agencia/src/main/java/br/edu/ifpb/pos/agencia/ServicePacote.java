@@ -6,6 +6,7 @@
 package br.edu.ifpb.pos.agencia;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
@@ -31,6 +32,10 @@ public class ServicePacote implements Serializable {
 
     public Pacote[] listarTodasPacote() {
         return repositoryPacote.todasOsPacote();
+    }
+
+    public List<Pacote> listarPacotePorAgencia(Long id) {
+        return repositoryPacote.listarPacotePorAgencia(id);
     }
 
     public void atualizarPacote(Pacote p) {

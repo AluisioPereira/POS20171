@@ -22,7 +22,7 @@ public class ReservaPassagem implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     private ClienteId cliente;
 
@@ -36,11 +36,11 @@ public class ReservaPassagem implements Serializable {
         this.passagem = passagem;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -62,10 +62,10 @@ public class ReservaPassagem implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 17 * hash + this.id;
-        hash = 17 * hash + Objects.hashCode(this.cliente);
-        hash = 17 * hash + Objects.hashCode(this.passagem);
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.cliente);
+        hash = 29 * hash + Objects.hashCode(this.passagem);
         return hash;
     }
 
@@ -81,7 +81,7 @@ public class ReservaPassagem implements Serializable {
             return false;
         }
         final ReservaPassagem other = (ReservaPassagem) obj;
-        if (this.id != other.id) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.cliente, other.cliente)) {
@@ -92,8 +92,5 @@ public class ReservaPassagem implements Serializable {
         }
         return true;
     }
-    
-    
-    
 
 }

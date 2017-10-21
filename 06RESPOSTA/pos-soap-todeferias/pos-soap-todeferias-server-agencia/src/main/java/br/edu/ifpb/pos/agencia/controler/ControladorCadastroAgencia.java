@@ -33,6 +33,20 @@ public class ControladorCadastroAgencia implements Serializable {
     @EJB
     private ServicePacote servicoPacote;
 
+    public String novaAgencia() {
+        String url;
+        url = "index?faces-redirect=true";
+        agencia = new Agencia();
+        return url;
+    }
+
+    public String novoPacote() {
+        String url;
+        url = "indexp?faces-redirect=true";
+        pacote = new Pacote();
+        return url;
+    }
+
     public String cadastrar() {
         String url;
         if (this.agencia.getId() == null) {
@@ -43,6 +57,21 @@ public class ControladorCadastroAgencia implements Serializable {
         }
         url = "gerenciamento?faces-redirect=true";
         agencia = new Agencia();
+        return url;
+    }
+
+    public String cadastrarPacote() {
+        String url;
+        if (this.pacote.getId() == null) {
+            this.servicoPacote.salvarPacote(pacote);
+            agencia.addPacote(pacote);
+            this.servicoAgencia.atualizarAgencia(agencia);
+            url = "informacoes?faces-redirect=true";
+        } else {
+            servicoPacote.atualizarPacote(pacote);
+        }
+        url = "indexp?faces-redirect=true";
+        pacote = new Pacote();
         return url;
     }
 
@@ -66,6 +95,16 @@ public class ControladorCadastroAgencia implements Serializable {
 
     }
 
+    public List<Pacote> listarPacote() {
+        Pacote[] lista = servicoPacote.listarTodasPacote();
+        return Arrays.asList(lista);
+
+    }
+
+    public List<Pacote> listarPacotePorAgencia(Long id) {
+        return servicoPacote.listarPacotePorAgencia(id);
+    }
+
     public String atualizar(String cnpj) {
         agencia = consultar(cnpj);
         if (agencia != null) {
@@ -75,13 +114,31 @@ public class ControladorCadastroAgencia implements Serializable {
         }
     }
 
+    public String atualizarPacote(Long id) {
+        pacote = consultarPacote(id);
+        if (pacote != null) {
+            return "editarp.xhtml?faces-redirect=true";
+        } else {
+            return null;
+        }
+    }
+
     public Agencia consultar(String cnpj) {
         return servicoAgencia.encontrarAgencia(cnpj);
+    }
+
+    public Pacote consultarPacote(Long id) {
+        return servicoPacote.encontrarPacote(id);
     }
 
     public String mostraAgencia(String id) {
         agencia = servicoAgencia.encontrarAgencia(id);
         return "informacoes";
+    }
+
+    public String mostraPacote(Long id) {
+        pacote = servicoPacote.encontrarPacote(id);
+        return "informacoesp";
     }
 
     public String mostraInformacoes(String id) {
@@ -101,6 +158,12 @@ public class ControladorCadastroAgencia implements Serializable {
     public String remover(String cnpj) {
         System.err.println("controle" + cnpj);
         servicoAgencia.removerAgencia(cnpj);
+        return null;
+    }
+
+    public String removerPacote(Long id) {
+        System.err.println("controle" + id);
+        servicoPacote.removerPacote(id);
         return null;
     }
 
@@ -140,4 +203,7 @@ public class ControladorCadastroAgencia implements Serializable {
         this.agencia = new Agencia();
     }
 
+    public void limparPacote() {
+        this.pacote = new Pacote();
+    }
 }

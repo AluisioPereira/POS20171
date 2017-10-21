@@ -1,4 +1,5 @@
-br\edu\ifpb\pos\pos\soap\todeferias\server\cliente\RepositoryCliente.class
-br\edu\ifpb\pos\pos\soap\todeferias\server\cliente\ServiceCliente.class
-br\edu\ifpb\pos\pos\soap\todeferias\server\cliente\Cliente.class
-br\edu\ifpb\pos\pos\soap\todeferias\server\cliente\Cliente_.class
+br\edu\ifpb\pos\cliente\Cliente.class
+br\edu\ifpb\pos\cliente\ServiceCliente.class
+br\edu\ifpb\pos\cliente\RepositoryCliente.class
+br\edu\ifpb\pos\cliente\Cliente_.class
+br\edu\ifpb\pos\cliente\controler\ControladorCadastroCliente.class

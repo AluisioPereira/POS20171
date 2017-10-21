@@ -14,45 +14,51 @@
             <br></br>
             CNPJ: <h:outputLabel for="cnpj" value="#{controladorCadastroAgencia.agencia.cnpj}"/><br></br>
 
-            Pacote(s):<br></br>
-            <h2>Agencia</h2>
+
+            <br></br>
+            <h2>Pacote(s):</h2>
             <h:form>
-                <h:commandButton action="indexpacote.xhtml" styleClass="btn btn-success btn-xs" value="Novo pacote"/>
+                <h:commandButton action="#{controladorCadastroAgencia.novoPacote()}" styleClass="btn btn-success btn-xs" value="NOVO PACOTE"/>
             </h:form>
 
             <hr/>
-            <h:dataTable value="#{controladorCadastroAgencia.listar()}" var="agencia" styleClass="table table-striped" cellspacing="3" cellpadding="3">
+
+            <h:dataTable value="#{controladorCadastroAgencia.agencia.pacote}" var="pacote" styleClass="table table-striped" cellspacing="3" cellpadding="3">
                 <h:column>
-                    <f:facet name="header">Nome</f:facet>
-                        #{agencia.nome}
+                    <f:facet name="header">Cliente</f:facet>
+                        #{pacote.cliente.cpf}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">CNPJ</f:facet>
-                        #{agencia.cnpj}
+                    <f:facet name="header">Passagem</f:facet>
+                        #{pacote.passagem.cnpjEmpresa}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Hotel</f:facet>
+                        #{pacote.hotel.cnpj}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <!--                    <h:outputText value="Excluir"/>-->
+                        <!-- <h:outputText value="Excluir"/>-->
                     </f:facet>
                     <h:form>
-                        <h:commandButton action="#{controladorCadastroAgencia.mostraAgencia(agencia.cnpj)}" styleClass="btn btn-primary btn-xs" value="Detalhes"/>
+                        <h:commandButton action="#{controladorCadastroAgencia.mostraPacote(pacote.id)}" styleClass="btn btn-primary btn-xs" value="Detalhes"/>
                     </h:form>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <!--                    <h:outputText value="Excluir"/>-->
+                        <!-- <h:outputText value="Excluir"/>-->
                     </f:facet>
                     <h:form>
 
-                        <h:commandButton action="#{controladorCadastroAgencia.atualizar(agencia.cnpj)}" styleClass="btn btn-warning btn-xs" value="Editar"/>
+                        <h:commandButton action="#{controladorCadastroAgencia.atualizarPacote(pacote.id)}" styleClass="btn btn-warning btn-xs" value="Editar"/>
                     </h:form>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <!--                    <h:outputText value="Excluir"/>-->
+                        <!-- <h:outputText value="Excluir"/>-->
                     </f:facet>
                     <h:form>
-                        <h:commandButton action="#{controladorCadastroAgencia.remover(agencia.cnpj)}" styleClass="btn btn-danger btn-xs" value="Excluir"/>
+                        <h:commandButton action="#{controladorCadastroAgencia.removerPacote(pacote.id)}" styleClass="btn btn-danger btn-xs" value="Excluir"/>
                     </h:form>
                 </h:column>
 

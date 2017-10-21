@@ -90,6 +90,9 @@
             
             
             
+            
+<!--            
+            
             <plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
@@ -128,7 +131,7 @@
                 </dependencies>
             </plugin>
             
-            
+            -->
             
             
             

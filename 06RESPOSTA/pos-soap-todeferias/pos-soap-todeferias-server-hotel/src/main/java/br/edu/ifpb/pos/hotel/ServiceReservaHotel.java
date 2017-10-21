@@ -5,13 +5,16 @@
  */
 package br.edu.ifpb.pos.hotel;
 
+import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.jws.WebService;
 
 /**
  *
  * @author ajp
  */
+@Stateless
 @WebService
 public class ServiceReservaHotel {
     @EJB
@@ -28,6 +31,12 @@ public class ServiceReservaHotel {
     public ReservaHotel[] listarTodasReservaHotel() {
         return repositoryReservaHotel.todasOsReservaHotel();
     }
+    
+    
+    public List<ReservaHotel> listarReservaHotelPorHotel(Long id) {
+        return repositoryReservaHotel.listarReservaHotelPorHotel(id);
+    }
+    
 
     public void atualizarReservaHotel(ReservaHotel reservaHotel) {
         repositoryReservaHotel.atualizarReservaHotel(reservaHotel);

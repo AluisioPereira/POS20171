@@ -6,12 +6,14 @@
 package br.edu.ifpb.pos.cliente;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.jws.WebService;
 
 /**
  *
  * @author ajp
  */
+@Stateless
 @WebService
 public class ServiceCliente {
 
@@ -22,8 +24,8 @@ public class ServiceCliente {
         repositoryCliente.salvarNovoCliente(cliente);
     }
 
-    public void encontrarCliente(String cpf) {
-        repositoryCliente.findCliente(cpf);
+    public Cliente encontrarCliente(String cpf) {
+        return repositoryCliente.findCliente(cpf);
     }
 
     public Cliente[] listarTodasCliente() {

@@ -27,7 +27,7 @@ public class RepositoryCliente {
     }
 
     public Cliente findCliente(String cpf) {
-        TypedQuery<Cliente> q = em.createQuery("SELECT c FROM Cliente c WHERE c.cpf=:cfp", Cliente.class);
+        TypedQuery<Cliente> q = em.createQuery("SELECT c FROM Cliente c WHERE c.cpf=:cpf", Cliente.class);
         q.setParameter("cpf", cpf);
         return q.getSingleResult();
     }
@@ -42,10 +42,15 @@ public class RepositoryCliente {
     }
 
     public void removerCliente(String cpf) {
-        TypedQuery<Cliente> q = em.createQuery("SELECT c FROM Cliente c WHERE c.cpf=:cfp", Cliente.class);
+        TypedQuery<Cliente> q = em.createQuery("SELECT c FROM Cliente c WHERE c.cpf=:cpf", Cliente.class);
+        q.setParameter("cpf", cpf);
         Cliente cliente = q.getSingleResult();
         System.out.println("Excluindo o cliente: " + cliente.getNome());
-        em.remove(cliente);
+        removerClienteAlternativo(cliente);        
+    }
+
+    public void removerClienteAlternativo(Cliente c) {
+        em.remove(em.merge(c));
     }
 
 }

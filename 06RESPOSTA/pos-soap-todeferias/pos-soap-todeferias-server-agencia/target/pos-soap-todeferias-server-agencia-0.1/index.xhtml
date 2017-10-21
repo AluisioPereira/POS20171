@@ -10,7 +10,7 @@
                 <fieldset>
 
                     <!-- Form Name -->
-                    <legend>Novo Agencia</legend>
+                    <legend>Nova Agencia</legend>
 
                     <!-- Text input-->
 
@@ -19,31 +19,11 @@
                         <h:inputText value="#{controladorCadastroAgencia.agencia.nome}" id="nome"  class="form-control input-md" required="true" />
                     </div>
 
+
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="sobrenome">CNPJ</label>
                         <h:inputText value="#{controladorCadastroAgencia.agencia.cnpj}" id="cnpj"  class="form-control input-md" required="true"/>
                     </div>
-
-                    <h:form>
-                        <fieldset>
-
-                            <!-- Form Name -->
-                            <legend>Novo Pacote</legend>
-
-                            <!-- Text input-->
-
-                            <div class="form-group " rows="3">
-                                <label class="col-sm-3 control-label" for="nome">CpfCliente</label>
-                                <h:inputText value="#{controladorCadastroAgencia.agencia.nome}" id="nome" class="form-control input-md" required="true" />
-                            </div>
-
-                            <div class="form-group">
-                                <h:commandButton action="#{controladorCadastroAgencia.addPacote()}" value="Cadastrar" styleClass="btn btn-success" />
-                            </div>
-
-                        </fieldset>
-                    </h:form>
-
 
 
                     <div class="form-group">

@@ -23,18 +23,20 @@
                 <div id="navbar" class="collapse navbar-collapse">
 
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Gerenciamento de Agencia</a></li>
-                        <h:form>
-                            <h:commandButton action="#{controladorCadastroAgencia.principal()}" styleClass="btn btn-primary" value="Cadastro"/>
-                            <h:commandButton action="#{controladorCadastroAgencia.gerenciamento()}" styleClass="btn btn-warning" value="Gerenciamento"/>
+                        <li><a href="#">Gerenciamento de Agência</a></li>
 
-                        </h:form>
                     </ul>
                 </div>
+
             </div>
         </nav>
 
+
+
         <div class="container">
+            <h:form>
+                <h:commandButton action="#{controladorCadastroAgencia.gerenciamento()}" styleClass="btn btn-group" value="HOME"/>
+            </h:form>
             <ui:insert name="content">
                 <h1>JSF</h1>
             </ui:insert>
@@ -43,11 +45,10 @@
         <footer>
             <p class="text-center">
                 <ui:insert name="footer">
-                    Gerenciamento de Agencia
+                    Projeto to de ferias
                 </ui:insert>
             </p>
         </footer>
-
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>

@@ -36,14 +36,21 @@ public class RepositoryHotel {
         return resultList.toArray(new Hotel[0]);
     }
 
+    
+    
     public void atualizarHotel(Hotel hotel) {
         em.merge(hotel);
     }
 
     public void removerHotel(String cnpj) {
         TypedQuery<Hotel> q = em.createQuery("SELECT h FROM Hotel h WHERE h.cnpj=:cnpj", Hotel.class);
+        q.setParameter("cnpj", cnpj);
         Hotel hotel = q.getSingleResult();
         System.out.println("Excluindo o hotel: " + hotel.getNome());
-        em.remove(hotel);
+        removerHotelAlternativo(hotel);
+    }
+
+    public void removerHotelAlternativo(Hotel h) {
+        em.remove(em.merge(h));
     }
 }

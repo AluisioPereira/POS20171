@@ -28,7 +28,13 @@
             <version>2.3.5.Final</version>
         </dependency>
         
-        
+                <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1208-jdbc42-atlassian-hosted</version>
+        </dependency>
+
         
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -187,7 +193,7 @@
                    
             
             
-            -->            
+                    -->            
                     
                 </executions>
                 <dependencies>

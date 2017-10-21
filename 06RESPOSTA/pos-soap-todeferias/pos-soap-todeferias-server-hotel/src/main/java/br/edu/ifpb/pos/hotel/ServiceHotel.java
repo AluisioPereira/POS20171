@@ -6,12 +6,14 @@
 package br.edu.ifpb.pos.hotel;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.jws.WebService;
 
 /**
  *
  * @author ajp
  */
+@Stateless
 @WebService
 public class ServiceHotel {
 
@@ -22,8 +24,8 @@ public class ServiceHotel {
         repositoryHotel.salvarNovoHotel(hotel);
     }
 
-    public void encontrarHotel(String cnpj) {
-        repositoryHotel.findHotel(cnpj);
+    public Hotel encontrarHotel(String cnpj) {
+        return repositoryHotel.findHotel(cnpj);
     }
 
     public Hotel[] listarTodasHotel() {

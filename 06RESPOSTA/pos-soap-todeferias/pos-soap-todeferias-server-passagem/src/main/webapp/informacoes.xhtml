@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/default_layout.xhtml">
+        <ui:define name="content">
+            <h3>Informações da Passagem</h3>
+            <hr></hr>
+            <h1><strong><h:outputLabel for="nome" value="#{controladorCadastroPassagem.passagem.cnpjEmpresa}"/></strong></h1>
+            <br></br>
+            <br></br>
+            Numero da Poutrona: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.numeroPoutrona}"/><br></br>
+
+            
+            
+            Cidade de Origem: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.origem}"/><br></br>
+
+
+            Data e Hora de Saída: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.dataHoraSaida}"/><br></br>
+
+            Cidade de Destino: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.destino}"/><br></br>
+
+            Data e Hora de Chegada: <h:outputLabel for="cnpj" id="cnpj1" value="#{controladorCadastroPassagem.passagem.dataHoraChegada}"/><br></br>
+
+            
+            
+            
+            
+            <br></br>
+            <h2>Recerva(s) para a Passagem:</h2>
+            <h:form>
+                <h:commandButton action="#{controladorCadastroPassagem.novoReservaPassagem()}" styleClass="btn btn-success btn-xs" value="NOVO RESERVA"/>
+            </h:form>
+
+            <hr/>
+
+            <h:dataTable value="#{controladorCadastroPassagem.passagem.reservas}" var="reserva" styleClass="table table-striped" cellspacing="3" cellpadding="3" >
+                <h:column>
+                    <f:facet name="header">Cliente</f:facet>
+                        #{reserva.cliente.cpf}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CNPJ da Empresa Passagem</f:facet>
+                        #{reserva.passagem.cnpjEmpresa}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <!-- <h:outputText value="Excluir"/>-->
+                    </f:facet>
+                    <h:form>
+                        <h:commandButton action="#{controladorCadastroPassagem.mostraReservaPassagem(reserva.id)}" styleClass="btn btn-primary btn-xs" value="Detalhes"/>
+                    </h:form>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <!-- <h:outputText value="Excluir"/>-->
+                    </f:facet>
+                    <h:form>
+
+                        <h:commandButton action="#{controladorCadastroPassagem.mostraReservaPassagem(reserva.id)}" styleClass="btn btn-warning btn-xs" value="Editar"/>
+                    </h:form>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <!-- <h:outputText value="Excluir"/>-->
+                    </f:facet>
+                    <h:form>
+                        <h:commandButton action="#{controladorCadastroPassagem.mostraReservaPassagem(reserva.id)}" styleClass="btn btn-danger btn-xs" value="Excluir"/>
+                    </h:form>
+                </h:column>
+
+            </h:dataTable>
+
+        </ui:define>
+        <ui:define name="footer">
+            ToDeFerias
+        </ui:define>
+    </ui:composition>
+</html>
+

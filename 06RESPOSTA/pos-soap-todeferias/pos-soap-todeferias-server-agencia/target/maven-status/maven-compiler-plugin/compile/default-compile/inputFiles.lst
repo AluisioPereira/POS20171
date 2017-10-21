@@ -9,6 +9,7 @@ D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03pro
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\hotel\ListarTodasHotelResponse.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\passagem\EncontrarPassagemResponse.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\hotel\ListarTodasHotel.java
+D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\agencia\controler\ControladorCadastroPacote.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\hotel\AtualizarHotel.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\hotel\Quarto.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\hotel\ReservaHotel.java
@@ -47,6 +48,7 @@ D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03pro
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\cliente\SalvarClienteResponse.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\agencia\RepositoryPacote.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\cliente\package-info.java
+D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\agencia\converte\ObjectConverter.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\passagem\AtualizarPassagem.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\passagem\package-info.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-agencia\src\main\java\br\edu\ifpb\pos\hotel\AtualizarHotelResponse.java

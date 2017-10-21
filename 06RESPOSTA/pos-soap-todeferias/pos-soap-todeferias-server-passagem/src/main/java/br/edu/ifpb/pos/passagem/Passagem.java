@@ -24,7 +24,7 @@ public class Passagem implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String cnpjEmpresa;
     private int numeroPoutrona;
     private String origem;
@@ -47,11 +47,11 @@ public class Passagem implements Serializable {
         this.dataHoraSaida = dataHoraSaida;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

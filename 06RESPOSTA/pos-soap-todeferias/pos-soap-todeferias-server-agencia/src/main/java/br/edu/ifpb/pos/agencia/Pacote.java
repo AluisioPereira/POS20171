@@ -23,7 +23,7 @@ public class Pacote implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long id;    
     private ClienteId cliente;
     private HotelId hotel;
     private PassagemId passagem;
