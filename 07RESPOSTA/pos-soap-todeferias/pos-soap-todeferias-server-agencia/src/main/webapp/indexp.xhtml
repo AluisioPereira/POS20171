@@ -29,7 +29,7 @@
                         <h:panelGrid  class="form-group" columns="2">
 
                             <h:outputLabel value="Cliente: ">
-                                <h:selectOneMenu value="#{controladorCadastroAgencia.clienteSelecionado}">
+                                <h:selectOneMenu value="#{controladorCadastroAgencia.clienteId.cpf}">
                                     <f:selectItem itemLabel="Selecione um cliente"/>
                                     <f:selectItems value="#{controladorCadastroAgencia.clienteSelect}"></f:selectItems>
                                 </h:selectOneMenu>
@@ -42,7 +42,7 @@
                         <h:panelGrid class="form-group" columns="2">
 
                             <h:outputLabel value="Código da Passagem: ">
-                                <h:selectOneMenu value="#{controladorCadastroAgencia.passagemSelecionado}">
+                                <h:selectOneMenu value="#{controladorCadastroAgencia.passagemId.cnpjEmpresa}">
                                     <f:selectItem itemLabel="selecione o código da passagem"/>
                                     <f:selectItems value="#{controladorCadastroAgencia.passagemSelect}"></f:selectItems>
                                 </h:selectOneMenu>
@@ -54,7 +54,7 @@
 
                         <h:panelGrid class="form-group" columns="2">
                             <h:outputLabel  value="CNPJ do Hotel: ">
-                                <h:selectOneMenu  value="#{controladorCadastroAgencia.hotelSelecionado}">
+                                <h:selectOneMenu  value="#{controladorCadastroAgencia.hotelId.cnpjHotel}">
                                     <f:selectItem itemLabel="selecione o cnpj do hotel "/>
                                     <f:selectItems value="#{controladorCadastroAgencia.hotelSelect}"></f:selectItems>
                                 </h:selectOneMenu>

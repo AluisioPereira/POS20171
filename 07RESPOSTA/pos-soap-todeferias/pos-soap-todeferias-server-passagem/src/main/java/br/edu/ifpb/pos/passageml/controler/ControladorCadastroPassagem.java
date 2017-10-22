@@ -12,12 +12,14 @@ import br.edu.ifpb.pos.passagem.Passagem;
 import br.edu.ifpb.pos.passagem.ReservaPassagem;
 import br.edu.ifpb.pos.passagem.ServicePassagem;
 import br.edu.ifpb.pos.passagem.ServiceReservaPassagem;
-import br.edu.ifpb.pos.passagem.domain.ClienteId;
-import br.edu.ifpb.pos.passagem.domain.PassagemId;
+import br.edu.ifpb.pos.domain.ClienteId;
+import br.edu.ifpb.pos.domain.PassagemId;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.model.SelectItem;
 import javax.inject.Named;
 
 /**
@@ -188,6 +190,39 @@ public class ControladorCadastroPassagem implements Serializable {
         ServiceCliente service = proxy.getServiceClientePort();
         return service.listarTodasCliente();
     }
+
+    private List<SelectItem> clienteSelect;
+
+    private Cliente clienteSelecionado = new Cliente();
+
+    public List<SelectItem> getClienteSelect() {
+        if (this.clienteSelect == null) {
+            clienteSelect = new ArrayList<>();
+            List<Cliente> lista = listarCliente();
+            System.out.println("Verfificou lista vazia");
+            if ((lista != null) && (!lista.isEmpty())) {
+                SelectItem item;
+                for (Cliente cliente : lista) {
+                    item = new SelectItem(cliente.getCpf(), cliente.getNome());
+                    this.clienteSelect.add(item);
+                }
+
+            }
+        }
+        System.out.println("Preencheu valores...");
+        return clienteSelect;
+    }
+
+    public Cliente getClienteSelecionado() {
+        return clienteSelecionado;
+    }
+
+    public void setClienteSelecionado(Cliente clienteSelecionado) {
+        this.clienteSelecionado = clienteSelecionado;
+    }
+    
+    
+    
 
     public Passagem getPassagem() {
         return passagem;

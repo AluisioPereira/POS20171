@@ -9,26 +9,35 @@ import br.edu.ifpb.pos.agencia.Agencia;
 import br.edu.ifpb.pos.agencia.Pacote;
 import br.edu.ifpb.pos.agencia.ServiceAgencia;
 import br.edu.ifpb.pos.agencia.ServicePacote;
-import br.edu.ifpb.pos.agencia.domain.AgenciaId;
-import br.edu.ifpb.pos.agencia.domain.ClienteId;
-import br.edu.ifpb.pos.agencia.domain.HotelId;
-import br.edu.ifpb.pos.agencia.domain.PassagemId;
 import br.edu.ifpb.pos.cliente.Cliente;
 import br.edu.ifpb.pos.cliente.ServiceCliente;
 import br.edu.ifpb.pos.cliente.ServiceClienteService;
+import br.edu.ifpb.pos.domain.AgenciaId1;
+import br.edu.ifpb.pos.domain.ClienteId1;
+import br.edu.ifpb.pos.domain.HotelId1;
+import br.edu.ifpb.pos.domain.PassagemId1;
 import br.edu.ifpb.pos.hotel.Hotel;
 import br.edu.ifpb.pos.hotel.ServiceHotel;
 import br.edu.ifpb.pos.hotel.ServiceHotelService;
+
+//import br.edu.ifpb.pos.hotel.ReservaHotel;
+
 import br.edu.ifpb.pos.passagem.Passagem;
 import br.edu.ifpb.pos.passagem.ServicePassagem;
 import br.edu.ifpb.pos.passagem.ServicePassagemService;
+import br.edu.ifpb.pos.reservaHotel.ClienteId;
+import br.edu.ifpb.pos.reservaHotel.HotelId;
+
+import br.edu.ifpb.pos.reservaHotel.ReservaHotel;
+
+import br.edu.ifpb.pos.reservaHotel.ServiceReservaHotel;
+import br.edu.ifpb.pos.reservaHotel.ServiceReservaHotelService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.EJB;
-import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 
@@ -50,32 +59,65 @@ public class ControladorCadastroAgencia implements Serializable {
     @EJB
     private ServicePacote servicoPacote;
 
-    private ClienteId clienteId;
+    private ClienteId1 clienteId;
 
-    private HotelId hotelId;
+    private HotelId1 hotelId;
 
-    private PassagemId passagemId;
+    private PassagemId1 passagemId;
 
-    private AgenciaId agenciaId;
+    private AgenciaId1 agenciaId;
 
     private String codigo;
+
+    private List<SelectItem> clienteSelect;
+
+    private Cliente clienteSelecionado = new Cliente();
+
+    private List<SelectItem> passagemSelect;
+
+    private Passagem passagemSelecionado = new Passagem();
+
+    private List<SelectItem> hotelSelect;
+
+    private Hotel hotelSelecionado = new Hotel();
+
+    public ControladorCadastroAgencia() {
+        this.agencia = new Agencia();
+        this.pacote = new Pacote();
+        this.clienteId = new ClienteId1();
+        this.hotelId = new HotelId1();
+        this.passagemId = new PassagemId1();
+        this.agenciaId = new AgenciaId1();
+        this.codigo = new String();
+        this.clienteSelecionado = new Cliente();
+        this.passagemSelecionado = new Passagem();
+        this.hotelSelecionado = new Hotel();
+    }
 
     public String novaAgencia() {
         String url;
         url = "index?faces-redirect=true";
-        agencia = new Agencia();
+        this.agencia = new Agencia();
         return url;
     }
 
     public String novoPacote() {
         String url;
         url = "indexp?faces-redirect=true";
-        pacote = new Pacote();
-        codigo = new String();
-        clienteId = new ClienteId();
-        hotelId = new HotelId();
-        passagemId = new PassagemId();
-        agenciaId = new AgenciaId(agenciaId.getCnpjAgencia());
+        this.pacote = new Pacote();
+        this.codigo = new String();
+        this.clienteId = new ClienteId1();
+        this.hotelId = new HotelId1();
+        this.passagemId = new PassagemId1();
+
+        this.clienteSelecionado = new Cliente();
+
+        this.passagemSelecionado = new Passagem();
+
+        this.hotelSelecionado = new Hotel();
+
+        this.agenciaId = new AgenciaId1(agenciaId.getCnpjAgencia());
+
         return url;
     }
 
@@ -85,27 +127,77 @@ public class ControladorCadastroAgencia implements Serializable {
             this.servicoAgencia.salvarAgencia(agencia);
             url = "index?faces-redirect=true";
         } else {
-            servicoAgencia.atualizarAgencia(agencia);
+            this.servicoAgencia.atualizarAgencia(agencia);
         }
         url = "gerenciamento?faces-redirect=true";
-        agencia = new Agencia();
+        this.agencia = new Agencia();
         return url;
     }
-    
-    public void realizarReservaHotel(String codigo, String clieteId, String hotelId){
+
+    public void realizarReservaHotel(String codigo, String clieteId, String hotelId) {
+        ServiceReservaHotelService proxy = new ServiceReservaHotelService();
+        ServiceReservaHotel service = proxy.getServiceReservaHotelPort();
+
+        ServiceHotelService proxyh = new ServiceHotelService();
+        ServiceHotel serviceh = proxyh.getServiceHotelPort();
+
+        ServiceClienteService proxyc = new ServiceClienteService();
+        ServiceCliente servicec = proxyc.getServiceClientePort();
+
+        Hotel eh = serviceh.encontrarHotel(hotelId);
+        Cliente ec = servicec.encontrarCliente(clieteId);
+
+        System.out.println("Realizando reserva hotel....");
+        ReservaHotel rh = new ReservaHotel();
+        rh.setCodigo(codigo);
+        System.out.println("Reserva  hotel mudando valores");
+
+        ClienteId cid = new ClienteId();
+        HotelId hid = new HotelId();
+
+        cid.setCpf(clieteId);
+        hid.setCnpjHotel(hotelId);
+
+        rh.setCliente(cid);
+
+        rh.setHotel(hid);
         
+        
+
+//        ClienteId1 cid1 = new ClienteId1(clieteId);
+//        HotelId1 hid1 = new HotelId1(hotelId);
+//        rh.getClass().asSubclass(ClienteId.class).cast(new ClienteId(clieteId));
+//
+//        rh.getClass().asSubclass(HotelId.class).cast(new HotelId(hotelId));
+//        rh.getClass().asSubclass(ClienteId1.class).cast(rh).setCpf(clieteId);
+//        rh.getClass().asSubclass(HotelId1.class).cast(rh).setCnpjHotel(hotelId);
+
+
+        System.out.println("Salvando reserva...");
+        service.salvarReservaHotel(rh);
+        
+        
+        
+        
+        
+        
+//        
+//        ReservaHotel rhc = service.encontrarReservaHotel(codigo);
+//        AddReservaHotel arh = new AddReservaHotel();
+//        arh.addReserva(eh, rh.getId(), rhc.getCodigo(), rhc.getCliente().getCpf(), rhc.getHotel().getCnpjHotel());
+//        
+        
+        
+
+        System.out.println("Reserva salva....");
     }
-    
-    
 
     public String cadastrarRH() {
         String url;
         if (this.pacote.getId() == null) {
-            this.clienteId.setCpf(clienteSelecionado.getCpf());
-            this.hotelId.setCnpjHotel(hotelSelecionado.getCnpj());
-            this.passagemId.setCnpjEmpresa(passagemSelecionado.getCnpjEmpresa());
 
             this.pacote = new Pacote(codigo, clienteId, hotelId, passagemId, agenciaId);
+            realizarReservaHotel(codigo, clienteId.getCpf(), hotelId.getCnpjHotel());
             this.servicoPacote.salvarPacote(pacote);
             this.servicoPacote.atualizarPacote(pacote);
 
@@ -178,7 +270,7 @@ public class ControladorCadastroAgencia implements Serializable {
 
     public String mostraAgencia(String id) {
         agencia = servicoAgencia.encontrarAgencia(id);
-        agenciaId = new AgenciaId(id);
+        agenciaId = new AgenciaId1(id);
         return "informacoes";
     }
 
@@ -209,18 +301,6 @@ public class ControladorCadastroAgencia implements Serializable {
         servicoPacote.removerPacote(p);
         return null;
     }
-
-    private List<SelectItem> clienteSelect;
-
-    private Cliente clienteSelecionado;
-
-    private List<SelectItem> passagemSelect;
-
-    private Passagem passagemSelecionado;
-
-    private List<SelectItem> hotelSelect;
-
-    private Hotel hotelSelecionado;
 
     public Cliente getClienteSelecionado() {
         return clienteSelecionado;
@@ -290,12 +370,13 @@ public class ControladorCadastroAgencia implements Serializable {
             if ((lista != null) && (!lista.isEmpty())) {
                 SelectItem item;
                 for (Cliente cliente : lista) {
-                    item = new SelectItem(cliente, cliente.getNome());
+                    item = new SelectItem(cliente.getCpf(), cliente.getNome());
                     this.clienteSelect.add(item);
                 }
 
             }
         }
+        System.out.println("Preencheu valores...");
         return clienteSelect;
     }
 
@@ -312,7 +393,7 @@ public class ControladorCadastroAgencia implements Serializable {
             if ((lista != null) && (!lista.isEmpty())) {
                 SelectItem item;
                 for (Passagem passagem : lista) {
-                    item = new SelectItem(passagem, passagem.getCnpjEmpresa());
+                    item = new SelectItem(passagem.getCnpjEmpresa(), passagem.getCnpjEmpresa());
                     this.passagemSelect.add(item);
                 }
 
@@ -341,7 +422,7 @@ public class ControladorCadastroAgencia implements Serializable {
             if ((lista != null) && (!lista.isEmpty())) {
                 SelectItem item;
                 for (Hotel hotel : lista) {
-                    item = new SelectItem(hotel, hotel.getCnpj());
+                    item = new SelectItem(hotel.getCnpj(), hotel.getCnpj());
                     this.hotelSelect.add(item);
                 }
 
@@ -395,35 +476,35 @@ public class ControladorCadastroAgencia implements Serializable {
         this.servicoPacote = servicoPacote;
     }
 
-    public ClienteId getClienteId() {
+    public ClienteId1 getClienteId() {
         return clienteId;
     }
 
-    public void setClienteId(ClienteId clienteId) {
+    public void setClienteId(ClienteId1 clienteId) {
         this.clienteId = clienteId;
     }
 
-    public HotelId getHotelId() {
+    public HotelId1 getHotelId() {
         return hotelId;
     }
 
-    public void setHotelId(HotelId hotelId) {
+    public void setHotelId(HotelId1 hotelId) {
         this.hotelId = hotelId;
     }
 
-    public PassagemId getPassagemId() {
+    public PassagemId1 getPassagemId() {
         return passagemId;
     }
 
-    public void setPassagemId(PassagemId passagemId) {
+    public void setPassagemId(PassagemId1 passagemId) {
         this.passagemId = passagemId;
     }
 
-    public AgenciaId getAgenciaId() {
+    public AgenciaId1 getAgenciaId() {
         return agenciaId;
     }
 
-    public void setAgenciaId(AgenciaId agenciaId) {
+    public void setAgenciaId(AgenciaId1 agenciaId) {
         this.agenciaId = agenciaId;
     }
 

@@ -5,8 +5,8 @@
  */
 package br.edu.ifpb.pos.passagem;
 
-import br.edu.ifpb.pos.passagem.domain.ClienteId;
-import br.edu.ifpb.pos.passagem.domain.PassagemId;
+import br.edu.ifpb.pos.domain.ClienteId;
+import br.edu.ifpb.pos.domain.PassagemId;
 
 /**
  *

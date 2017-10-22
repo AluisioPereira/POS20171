@@ -40,6 +40,17 @@ public interface ServiceHotel {
 
     /**
      * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "salvarHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.SalvarHotel")
+    @ResponseWrapper(localName = "salvarHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.SalvarHotelResponse")
+    public void salvarHotel(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Hotel arg0);
+
+    /**
+     * 
      * @return
      *     returns java.util.List<br.edu.ifpb.pos.hotel.Hotel>
      */
@@ -70,16 +81,5 @@ public interface ServiceHotel {
     public void removerHotel(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "salvarHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.SalvarHotel")
-    @ResponseWrapper(localName = "salvarHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.SalvarHotelResponse")
-    public void salvarHotel(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Hotel arg0);
 
 }

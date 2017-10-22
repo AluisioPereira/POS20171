@@ -1,12 +1,12 @@
 package br.edu.ifpb.pos.passagem;
 
-import br.edu.ifpb.pos.passagem.domain.ClienteId;
-import br.edu.ifpb.pos.passagem.domain.PassagemId;
+import br.edu.ifpb.pos.domain.ClienteId;
+import br.edu.ifpb.pos.domain.PassagemId;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-10-21T23:06:36")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-10-22T18:41:02")
 @StaticMetamodel(ReservaPassagem.class)
 public class ReservaPassagem_ { 
 

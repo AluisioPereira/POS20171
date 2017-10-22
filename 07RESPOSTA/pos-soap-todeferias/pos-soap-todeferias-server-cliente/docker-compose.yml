@@ -1,0 +1,29 @@
+version: "2"
+services:
+  postgres:
+    container_name: postgres-todeferias
+    image: ajp/db-todeferias
+    build: ./postgres
+    ports:
+     - "5434:5432"
+    expose:
+     - 5434   
+    volumes:
+     - postgres-volume-db:/var/lib/postgresql/data/
+  web:
+    container_name: app-cliente
+    build: .
+    image: ajp/cliente
+    ports:
+     - "8086:8080"
+    links:
+     - "postgres:localhost"
+    expose:
+     - 8086
+networks:
+  default:
+    external:
+      name: cliente
+volumes:
+    postgres-volume-db:
+      driver: local

@@ -29,6 +29,28 @@ public interface ServicePassagem {
      * @param arg0
      */
     @WebMethod
+    @RequestWrapper(localName = "removerPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.RemoverPassagem")
+    @ResponseWrapper(localName = "removerPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.RemoverPassagemResponse")
+    public void removerPassagem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "salvarPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.SalvarPassagem")
+    @ResponseWrapper(localName = "salvarPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.SalvarPassagemResponse")
+    public void salvarPassagem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Passagem arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
     @RequestWrapper(localName = "atualizarPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.AtualizarPassagem")
     @ResponseWrapper(localName = "atualizarPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.AtualizarPassagemResponse")
     public void atualizarPassagem(
@@ -59,27 +81,5 @@ public interface ServicePassagem {
     @RequestWrapper(localName = "listarTodasPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.ListarTodasPassagem")
     @ResponseWrapper(localName = "listarTodasPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.ListarTodasPassagemResponse")
     public List<Passagem> listarTodasPassagem();
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "salvarPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.SalvarPassagem")
-    @ResponseWrapper(localName = "salvarPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.SalvarPassagemResponse")
-    public void salvarPassagem(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Passagem arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "removerPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.RemoverPassagem")
-    @ResponseWrapper(localName = "removerPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.RemoverPassagemResponse")
-    public void removerPassagem(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
 
 }

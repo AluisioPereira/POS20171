@@ -26,6 +26,17 @@ public interface ServiceReservaHotel {
 
     /**
      * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "salvarReservaHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.SalvarReservaHotel")
+    @ResponseWrapper(localName = "salvarReservaHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.SalvarReservaHotelResponse")
+    public void salvarReservaHotel(
+        @WebParam(name = "arg0", targetNamespace = "")
+        ReservaHotel arg0);
+
+    /**
+     * 
      * @return
      *     returns java.util.List<br.edu.ifpb.pos.reservaHotel.ReservaHotel>
      */
@@ -54,17 +65,6 @@ public interface ServiceReservaHotel {
      * @param arg0
      */
     @WebMethod
-    @RequestWrapper(localName = "atualizarReservaHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.AtualizarReservaHotel")
-    @ResponseWrapper(localName = "atualizarReservaHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.AtualizarReservaHotelResponse")
-    public void atualizarReservaHotel(
-        @WebParam(name = "arg0", targetNamespace = "")
-        ReservaHotel arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
     @RequestWrapper(localName = "removerReservaHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.RemoverReservaHotel")
     @ResponseWrapper(localName = "removerReservaHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.RemoverReservaHotelResponse")
     public void removerReservaHotel(
@@ -76,9 +76,9 @@ public interface ServiceReservaHotel {
      * @param arg0
      */
     @WebMethod
-    @RequestWrapper(localName = "salvarReservaHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.SalvarReservaHotel")
-    @ResponseWrapper(localName = "salvarReservaHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.SalvarReservaHotelResponse")
-    public void salvarReservaHotel(
+    @RequestWrapper(localName = "atualizarReservaHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.AtualizarReservaHotel")
+    @ResponseWrapper(localName = "atualizarReservaHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaHotel.AtualizarReservaHotelResponse")
+    public void atualizarReservaHotel(
         @WebParam(name = "arg0", targetNamespace = "")
         ReservaHotel arg0);
 

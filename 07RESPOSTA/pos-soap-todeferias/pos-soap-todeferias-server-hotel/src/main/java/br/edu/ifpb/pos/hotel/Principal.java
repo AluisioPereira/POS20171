@@ -8,8 +8,8 @@ package br.edu.ifpb.pos.hotel;
 import br.edu.ifpb.pos.cliente.Cliente;
 import br.edu.ifpb.pos.cliente.ServiceCliente;
 import br.edu.ifpb.pos.cliente.ServiceClienteService;
-import br.edu.ifpb.pos.hotel.domain.ClienteId;
-import br.edu.ifpb.pos.hotel.domain.HotelId;
+import br.edu.ifpb.pos.domain.ClienteId;
+import br.edu.ifpb.pos.domain.HotelId;
 
 /**
  *

@@ -48,14 +48,14 @@ public interface ServiceReservaPassagem {
 
     /**
      * 
-     * @param arg0
+     * @return
+     *     returns java.util.List<br.edu.ifpb.pos.reservaPassagem.ReservaPassagem>
      */
     @WebMethod
-    @RequestWrapper(localName = "salvarReservaPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaPassagem.SalvarReservaPassagem")
-    @ResponseWrapper(localName = "salvarReservaPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaPassagem.SalvarReservaPassagemResponse")
-    public void salvarReservaPassagem(
-        @WebParam(name = "arg0", targetNamespace = "")
-        ReservaPassagem arg0);
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarTodasReservaPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaPassagem.ListarTodasReservaPassagem")
+    @ResponseWrapper(localName = "listarTodasReservaPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaPassagem.ListarTodasReservaPassagemResponse")
+    public List<ReservaPassagem> listarTodasReservaPassagem();
 
     /**
      * 
@@ -73,13 +73,13 @@ public interface ServiceReservaPassagem {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<br.edu.ifpb.pos.reservaPassagem.ReservaPassagem>
+     * @param arg0
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarTodasReservaPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaPassagem.ListarTodasReservaPassagem")
-    @ResponseWrapper(localName = "listarTodasReservaPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaPassagem.ListarTodasReservaPassagemResponse")
-    public List<ReservaPassagem> listarTodasReservaPassagem();
+    @RequestWrapper(localName = "salvarReservaPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaPassagem.SalvarReservaPassagem")
+    @ResponseWrapper(localName = "salvarReservaPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.reservaPassagem.SalvarReservaPassagemResponse")
+    public void salvarReservaPassagem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        ReservaPassagem arg0);
 
 }
