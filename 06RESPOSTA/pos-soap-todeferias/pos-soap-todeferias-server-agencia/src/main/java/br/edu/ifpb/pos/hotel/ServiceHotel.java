@@ -27,6 +27,20 @@ public interface ServiceHotel {
     /**
      * 
      * @param arg0
+     * @return
+     *     returns br.edu.ifpb.pos.hotel.Hotel
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "encontrarHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.EncontrarHotel")
+    @ResponseWrapper(localName = "encontrarHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.EncontrarHotelResponse")
+    public Hotel encontrarHotel(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
      */
     @WebMethod
     @RequestWrapper(localName = "salvarHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.SalvarHotel")
@@ -37,14 +51,14 @@ public interface ServiceHotel {
 
     /**
      * 
-     * @param arg0
+     * @return
+     *     returns java.util.List<br.edu.ifpb.pos.hotel.Hotel>
      */
     @WebMethod
-    @RequestWrapper(localName = "encontrarHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.EncontrarHotel")
-    @ResponseWrapper(localName = "encontrarHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.EncontrarHotelResponse")
-    public void encontrarHotel(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarTodasHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.ListarTodasHotel")
+    @ResponseWrapper(localName = "listarTodasHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.ListarTodasHotelResponse")
+    public List<Hotel> listarTodasHotel();
 
     /**
      * 
@@ -67,16 +81,5 @@ public interface ServiceHotel {
     public void removerHotel(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<br.edu.ifpb.pos.hotel.Hotel>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarTodasHotel", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.ListarTodasHotel")
-    @ResponseWrapper(localName = "listarTodasHotelResponse", targetNamespace = "http://hotel.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.hotel.ListarTodasHotelResponse")
-    public List<Hotel> listarTodasHotel();
 
 }

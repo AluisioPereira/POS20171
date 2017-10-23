@@ -5,10 +5,10 @@
  */
 package br.edu.ifpb.pos.agencia;
 
-import br.edu.ifpb.pos.domain.AgenciaId1;
-import br.edu.ifpb.pos.domain.ClienteId1;
-import br.edu.ifpb.pos.domain.HotelId1;
-import br.edu.ifpb.pos.domain.PassagemId1;
+import br.edu.ifpb.pos.agencia.domain.AgenciaId;
+import br.edu.ifpb.pos.agencia.domain.ClienteId;
+import br.edu.ifpb.pos.agencia.domain.HotelId;
+import br.edu.ifpb.pos.agencia.domain.PassagemId;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -30,24 +30,24 @@ public class Pacote implements Serializable {
     @Column(name="codigo")
     private String codigo;
     @Column(name="cliente")
-    private ClienteId1 cliente;
+    private ClienteId cliente;
     @Column(name="hotel")
-    private HotelId1 hotel;
+    private HotelId hotel;
     @Column(name="passagem")
-    private PassagemId1 passagem;
+    private PassagemId passagem;
     @Column(name="agencia")
-    private AgenciaId1 agencia;
+    private AgenciaId agencia;
 
     public Pacote() {
     }
 
-    public Pacote(ClienteId1 cliente, HotelId1 hotel, PassagemId1 passagem) {
+    public Pacote(ClienteId cliente, HotelId hotel, PassagemId passagem) {
         this.cliente = cliente;
         this.hotel = hotel;
         this.passagem = passagem;
     }
 
-    public Pacote(String codigo, ClienteId1 cliente, HotelId1 hotel, PassagemId1 passagem, AgenciaId1 agencia) {
+    public Pacote(String codigo, ClienteId cliente, HotelId hotel, PassagemId passagem, AgenciaId agencia) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.hotel = hotel;
@@ -63,11 +63,11 @@ public class Pacote implements Serializable {
         this.codigo = codigo;
     }
 
-    public AgenciaId1 getAgencia() {
+    public AgenciaId getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(AgenciaId1 agencia) {
+    public void setAgencia(AgenciaId agencia) {
         this.agencia = agencia;
     }
 
@@ -79,27 +79,27 @@ public class Pacote implements Serializable {
         this.id = id;
     }
 
-    public ClienteId1 getCliente() {
+    public ClienteId getCliente() {
         return cliente;
     }
 
-    public void setCliente(ClienteId1 cliente) {
+    public void setCliente(ClienteId cliente) {
         this.cliente = cliente;
     }
 
-    public HotelId1 getHotel() {
+    public HotelId getHotel() {
         return hotel;
     }
 
-    public void setHotel(HotelId1 hotel) {
+    public void setHotel(HotelId hotel) {
         this.hotel = hotel;
     }
 
-    public PassagemId1 getPassagem() {
+    public PassagemId getPassagem() {
         return passagem;
     }
 
-    public void setPassagem(PassagemId1 passagem) {
+    public void setPassagem(PassagemId passagem) {
         this.passagem = passagem;
     }
 

@@ -17,8 +17,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="cliente" type="{http://hotel.pos.ifpb.edu.br/}clienteId" minOccurs="0"/>
+ *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="hotel" type="{http://hotel.pos.ifpb.edu.br/}hotelId" minOccurs="0"/>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,14 +31,16 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "reservaHotel", propOrder = {
     "cliente",
+    "codigo",
     "hotel",
     "id"
 })
 public class ReservaHotel {
 
     protected ClienteId cliente;
+    protected String codigo;
     protected HotelId hotel;
-    protected int id;
+    protected Long id;
 
     /**
      * Obtém o valor da propriedade cliente.
@@ -61,6 +64,30 @@ public class ReservaHotel {
      */
     public void setCliente(ClienteId value) {
         this.cliente = value;
+    }
+
+    /**
+     * Obtém o valor da propriedade codigo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * Define o valor da propriedade codigo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCodigo(String value) {
+        this.codigo = value;
     }
 
     /**
@@ -90,16 +117,24 @@ public class ReservaHotel {
     /**
      * Obtém o valor da propriedade id.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * Define o valor da propriedade id.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setId(int value) {
+    public void setId(Long value) {
         this.id = value;
     }
 

@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="dataHoraChegada" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="dataHoraSaida" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="destino" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="numeroPoutrona" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="origem" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="reservas" type="{http://passagem.pos.ifpb.edu.br/}reservaPassagem" maxOccurs="unbounded" minOccurs="0"/>
@@ -52,7 +52,7 @@ public class Passagem {
     protected String dataHoraChegada;
     protected String dataHoraSaida;
     protected String destino;
-    protected int id;
+    protected Long id;
     protected int numeroPoutrona;
     protected String origem;
     @XmlElement(nillable = true)
@@ -157,16 +157,24 @@ public class Passagem {
     /**
      * Obtém o valor da propriedade id.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * Define o valor da propriedade id.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setId(int value) {
+    public void setId(Long value) {
         this.id = value;
     }
 

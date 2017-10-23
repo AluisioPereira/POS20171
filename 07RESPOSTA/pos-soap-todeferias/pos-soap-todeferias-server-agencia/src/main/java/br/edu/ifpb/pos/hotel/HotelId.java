@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cnpjHotel" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="cnpj" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,34 +27,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "hotelId", propOrder = {
-    "cnpjHotel"
+    "cnpj"
 })
 public class HotelId {
 
-    protected String cnpjHotel;
+    protected String cnpj;
 
     /**
-     * Obtém o valor da propriedade cnpjHotel.
+     * Obtém o valor da propriedade cnpj.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCnpjHotel() {
-        return cnpjHotel;
+    public String getCnpj() {
+        return cnpj;
     }
 
     /**
-     * Define o valor da propriedade cnpjHotel.
+     * Define o valor da propriedade cnpj.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCnpjHotel(String value) {
-        this.cnpjHotel = value;
+    public void setCnpj(String value) {
+        this.cnpj = value;
     }
 
 }

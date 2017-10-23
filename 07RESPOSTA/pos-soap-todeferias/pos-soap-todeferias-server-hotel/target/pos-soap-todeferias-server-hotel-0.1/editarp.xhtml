@@ -24,22 +24,10 @@
                         <h:inputText value="#{controladorCadastroHotel.reservaHotel.codigo}" id="codigo1"  class="form-control input-md" required="true" />
                     </div>
 
-                    
-                    
                     <div class="form-group " rows="3">
-                        <h:panelGrid  class="form-group" columns="2">
-
-                            <h:outputLabel value="Cliente: ">
-                                <h:selectOneMenu value="#{controladorCadastroHotel.reservaHotel.cliente.cpf}">
-                                    <f:selectItem itemLabel="Selecione um cliente"/>
-                                    <f:selectItems value="#{controladorCadastroHotel.clienteSelect}"></f:selectItems>
-                                </h:selectOneMenu>
-                            </h:outputLabel>
-                        </h:panelGrid>
+                        <label class="col-sm-3 control-label" for="nome">CPF cliente</label>
+                        <h:inputText value="#{controladorCadastroHotel.reservaHotel.cliente.cpf}" id="cliente"  class="form-control input-md" required="true" />
                     </div>
-                    
-                    
-                    
 
                     <div class="form-group">
                         <h:commandButton action="#{controladorCadastroHotel.cadastrarRH()}" value="Salvar" styleClass="btn btn-success" />

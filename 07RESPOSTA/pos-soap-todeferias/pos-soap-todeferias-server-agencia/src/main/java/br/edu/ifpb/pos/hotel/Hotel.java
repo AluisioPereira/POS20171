@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="cnpj" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="nome" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="reservas" type="{http://hotel.pos.ifpb.edu.br/}reservaHotel" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Hotel {
 
     protected String cnpj;
-    protected Long id;
+    protected int id;
     protected String nome;
     @XmlElement(nillable = true)
     protected List<ReservaHotel> reservas;
@@ -73,24 +73,16 @@ public class Hotel {
     /**
      * Obtém o valor da propriedade id.
      * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
      */
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * Define o valor da propriedade id.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
      */
-    public void setId(Long value) {
+    public void setId(int value) {
         this.id = value;
     }
 

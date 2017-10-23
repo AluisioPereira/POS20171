@@ -5,11 +5,10 @@
  */
 package br.edu.ifpb.pos.passagem;
 
-import br.edu.ifpb.pos.domain.ClienteId;
-import br.edu.ifpb.pos.domain.PassagemId;
+import br.edu.ifpb.pos.passagem.domain.ClienteId;
+import br.edu.ifpb.pos.passagem.domain.PassagemId;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,11 +23,11 @@ public class ReservaPassagem implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-
+    
     private String codigo;
-    @Embedded
+    
     private ClienteId cliente;
-    @Embedded
+
     private PassagemId passagem;
 
     public ReservaPassagem() {
@@ -44,7 +43,8 @@ public class ReservaPassagem implements Serializable {
         this.cliente = cliente;
         this.passagem = passagem;
     }
-
+    
+    
     public Long getId() {
         return id;
     }
@@ -76,6 +76,8 @@ public class ReservaPassagem implements Serializable {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+    
+    
 
     @Override
     public int hashCode() {
@@ -113,5 +115,7 @@ public class ReservaPassagem implements Serializable {
         }
         return true;
     }
+
+   
 
 }

@@ -5,7 +5,6 @@
  */
 package br.edu.ifpb.pos.hotel;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -22,10 +21,30 @@ public class RepositoryReservaHotel {
     @PersistenceContext
     private EntityManager em;
 
+    public RepositoryReservaHotel() {
+    }
+
     public void salvarNovoReservaHotel(ReservaHotel rh) {
         em.persist(rh);
     }
 
+//    public boolean encontarHotel(ReservaHotel rh) {
+//        this.h = this.rp.findHotel(rh.getHotel().getCnpjHotel());
+//        if (h != null) {
+//            h.addReservaHotel(rh);
+//            atualizarHotel(h);
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public boolean atualizarHotel(Hotel h) {
+//        this.rp.atualizarHotel(h);
+//        return true;
+//
+//    }
+    
+    
     public ReservaHotel findReservaHotel(String codigo) {
         TypedQuery<ReservaHotel> q = em.createQuery("SELECT rh FROM reservahotel rh WHERE rh.codigo=:codigo", ReservaHotel.class);
         q.setParameter("codigo", codigo);

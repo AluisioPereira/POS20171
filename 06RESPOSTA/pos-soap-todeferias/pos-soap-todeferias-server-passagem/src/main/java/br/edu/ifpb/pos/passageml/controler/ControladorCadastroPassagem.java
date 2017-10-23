@@ -5,16 +5,21 @@
  */
 package br.edu.ifpb.pos.passageml.controler;
 
+import br.edu.ifpb.pos.cliente.Cliente;
+import br.edu.ifpb.pos.cliente.ServiceCliente;
+import br.edu.ifpb.pos.cliente.ServiceClienteService;
 import br.edu.ifpb.pos.passagem.Passagem;
 import br.edu.ifpb.pos.passagem.ReservaPassagem;
 import br.edu.ifpb.pos.passagem.ServicePassagem;
 import br.edu.ifpb.pos.passagem.ServiceReservaPassagem;
-import br.edu.ifpb.pos.passagem.domain.ClienteId;
-import br.edu.ifpb.pos.passagem.domain.PassagemId;
+import br.edu.ifpb.pos.domain.ClienteId;
+import br.edu.ifpb.pos.domain.PassagemId;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.model.SelectItem;
 import javax.inject.Named;
 
 /**
@@ -38,7 +43,7 @@ public class ControladorCadastroPassagem implements Serializable {
     private ClienteId clienteId;
 
     private PassagemId passagemId;
-    
+
     private String codigo;
 
     public String novaPassagem() {
@@ -51,7 +56,7 @@ public class ControladorCadastroPassagem implements Serializable {
     public String novoReservaPassagem() {
         String url;
         url = "indexp?faces-redirect=true";
-        reservaPassagem = new ReservaPassagem();       
+        reservaPassagem = new ReservaPassagem();
         codigo = new String();
         clienteId = new ClienteId();
         passagemId = new PassagemId(passagemId.getCnpjEmpresa());
@@ -119,10 +124,6 @@ public class ControladorCadastroPassagem implements Serializable {
 
     }
 
-//    public List<ReservaPassagem> listarReservaPassagemPorPassagem(Long id) {
-//        return servicoReservaPassagem.listarReservaPassagemPorPassagem(id);
-//    }
-
     public String atualizar(String cnpj) {
         passagem = consultar(cnpj);
         if (passagem != null) {
@@ -177,12 +178,51 @@ public class ControladorCadastroPassagem implements Serializable {
 
     public String removerReservaPassagem(ReservaPassagem rp) {
         System.err.println("controle" + rp);
-        passagem.removePassagem(rp); 
+        passagem.removePassagem(rp);
         servicoPassagem.atualizarPassagem(passagem);
         servicoReservaPassagem.removerReservaPassagem(rp);
-        
+
         return null;
     }
+
+    public List<Cliente> listarCliente() {
+        ServiceClienteService proxy = new ServiceClienteService();
+        ServiceCliente service = proxy.getServiceClientePort();
+        return service.listarTodasCliente();
+    }
+
+    private List<SelectItem> clienteSelect;
+
+    private Cliente clienteSelecionado = new Cliente();
+
+    public List<SelectItem> getClienteSelect() {
+        if (this.clienteSelect == null) {
+            clienteSelect = new ArrayList<>();
+            List<Cliente> lista = listarCliente();
+            System.out.println("Verfificou lista vazia");
+            if ((lista != null) && (!lista.isEmpty())) {
+                SelectItem item;
+                for (Cliente cliente : lista) {
+                    item = new SelectItem(cliente.getCpf(), cliente.getNome());
+                    this.clienteSelect.add(item);
+                }
+
+            }
+        }
+        System.out.println("Preencheu valores...");
+        return clienteSelect;
+    }
+
+    public Cliente getClienteSelecionado() {
+        return clienteSelecionado;
+    }
+
+    public void setClienteSelecionado(Cliente clienteSelecionado) {
+        this.clienteSelecionado = clienteSelecionado;
+    }
+    
+    
+    
 
     public Passagem getPassagem() {
         return passagem;
@@ -235,8 +275,6 @@ public class ControladorCadastroPassagem implements Serializable {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    
-        
 
     public void setPassagemId(PassagemId passagemId) {
         this.passagemId = passagemId;

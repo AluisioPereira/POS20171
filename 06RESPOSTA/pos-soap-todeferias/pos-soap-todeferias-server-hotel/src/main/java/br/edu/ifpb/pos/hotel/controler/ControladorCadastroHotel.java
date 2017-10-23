@@ -5,16 +5,21 @@
  */
 package br.edu.ifpb.pos.hotel.controler;
 
+import br.edu.ifpb.pos.cliente.Cliente;
+import br.edu.ifpb.pos.cliente.ServiceCliente;
+import br.edu.ifpb.pos.cliente.ServiceClienteService;
 import br.edu.ifpb.pos.hotel.Hotel;
 import br.edu.ifpb.pos.hotel.ReservaHotel;
 import br.edu.ifpb.pos.hotel.ServiceHotel;
 import br.edu.ifpb.pos.hotel.ServiceReservaHotel;
-import br.edu.ifpb.pos.hotel.domain.ClienteId;
-import br.edu.ifpb.pos.hotel.domain.HotelId;
+import br.edu.ifpb.pos.domain.ClienteId;
+import br.edu.ifpb.pos.domain.HotelId;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.model.SelectItem;
 import javax.inject.Named;
 
 /**
@@ -34,13 +39,11 @@ public class ControladorCadastroHotel implements Serializable {
 
     @EJB
     private ServiceReservaHotel servicoReservaHotel;
-    
-    
-    
+
     private ClienteId clienteId;
 
     private HotelId hotelId;
-    
+
     private String codigo;
 
     public String novaHotel() {
@@ -56,8 +59,8 @@ public class ControladorCadastroHotel implements Serializable {
         reservaHotel = new ReservaHotel();
         codigo = new String();
         clienteId = new ClienteId();
-        hotelId = new HotelId(hotelId.getCnpj());
-        
+        hotelId = new HotelId(hotelId.getCnpjHotel());
+
         return url;
     }
 
@@ -74,7 +77,7 @@ public class ControladorCadastroHotel implements Serializable {
         return url;
     }
 
-   public String cadastrarRH() {
+    public String cadastrarRH() {
         String url;
         if (this.reservaHotel.getId() == null) {
             this.reservaHotel = new ReservaHotel(codigo, clienteId, hotelId);
@@ -121,8 +124,38 @@ public class ControladorCadastroHotel implements Serializable {
         return Arrays.asList(lista);
 
     }
+    private List<SelectItem> clienteSelect;
+    
+    private Cliente clienteSelecionado = new Cliente();
 
+    public List<SelectItem> getClienteSelect() {
+        if (this.clienteSelect == null) {
+            clienteSelect = new ArrayList<>();
+            List<Cliente> lista = listarCliente();
+            System.out.println("Verfificou lista vazia");
+            if ((lista != null) && (!lista.isEmpty())) {
+                SelectItem item;
+                for (Cliente cliente : lista) {
+                    item = new SelectItem(cliente.getCpf(), cliente.getNome());
+                    this.clienteSelect.add(item);
+                }
 
+            }
+        }
+        System.out.println("Preencheu valores...");
+        return clienteSelect;
+    }
+
+    public Cliente getClienteSelecionado() {
+        return clienteSelecionado;
+    }
+
+    public void setClienteSelecionado(Cliente clienteSelecionado) {
+        this.clienteSelecionado = clienteSelecionado;
+    }
+    
+    
+    
 
     public String atualizar(String cnpj) {
         hotel = consultar(cnpj);
@@ -160,8 +193,6 @@ public class ControladorCadastroHotel implements Serializable {
         reservaHotel = rh;
         return "informacoesp";
     }
-    
-    
 
     public String mostraInformacoes(String id) {
         hotel = servicoHotel.encontrarHotel(id);
@@ -177,17 +208,21 @@ public class ControladorCadastroHotel implements Serializable {
         servicoHotel.removerHotel(cnpj);
         return null;
     }
-    
-    
+
     public String removerReservaHotel(ReservaHotel rh) {
         System.err.println("controle" + rh.getCodigo());
-        hotel.removeReservaHotel(rh); 
+        hotel.removeReservaHotel(rh);
         servicoHotel.atualizarHotel(hotel);
         servicoReservaHotel.removerReservaHotel(rh);
-        
+
         return null;
     }
 
+    public List<Cliente> listarCliente() {
+        ServiceClienteService proxy = new ServiceClienteService();
+        ServiceCliente service = proxy.getServiceClientePort();
+        return service.listarTodasCliente();
+    }
 
     public Hotel getHotel() {
         return hotel;
@@ -244,9 +279,6 @@ public class ControladorCadastroHotel implements Serializable {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    
-    
-    
 
     public void limparCampos() {
         this.hotel = new Hotel();

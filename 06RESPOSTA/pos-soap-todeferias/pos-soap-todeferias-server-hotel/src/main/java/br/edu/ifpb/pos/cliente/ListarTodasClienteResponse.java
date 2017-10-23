@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://cliente.server.todeferias.soap.pos.pos.ifpb.edu.br/}cliente" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://cliente.pos.ifpb.edu.br/}cliente" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

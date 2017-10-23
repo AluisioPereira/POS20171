@@ -17,20 +17,20 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "ServiceClienteService", targetNamespace = "http://cliente.pos.ifpb.edu.br/", wsdlLocation = "http://localhost:8080/ServiceClienteService/ServiceCliente?WSDL")
+@WebServiceClient(name = "ServiceClienteService", targetNamespace = "http://cliente.server.todeferias.soap.pos.pos.ifpb.edu.br/", wsdlLocation = "http://localhost:8080/pos-soap-todeferias-server-cliente/ServiceClienteService?wsdl")
 public class ServiceClienteService
     extends Service
 {
 
     private final static URL SERVICECLIENTESERVICE_WSDL_LOCATION;
     private final static WebServiceException SERVICECLIENTESERVICE_EXCEPTION;
-    private final static QName SERVICECLIENTESERVICE_QNAME = new QName("http://cliente.pos.ifpb.edu.br/", "ServiceClienteService");
+    private final static QName SERVICECLIENTESERVICE_QNAME = new QName("http://cliente.server.todeferias.soap.pos.pos.ifpb.edu.br/", "ServiceClienteService");
 
     static {
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/ServiceClienteService/ServiceCliente?WSDL");
+            url = new URL("http://localhost:8080/pos-soap-todeferias-server-cliente/ServiceClienteService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
@@ -53,7 +53,7 @@ public class ServiceClienteService
      */
     @WebEndpoint(name = "ServiceClientePort")
     public ServiceCliente getServiceClientePort() {
-        return super.getPort(new QName("http://cliente.pos.ifpb.edu.br/", "ServiceClientePort"), ServiceCliente.class);
+        return super.getPort(new QName("http://cliente.server.todeferias.soap.pos.pos.ifpb.edu.br/", "ServiceClientePort"), ServiceCliente.class);
     }
 
     /**
@@ -65,7 +65,7 @@ public class ServiceClienteService
      */
     @WebEndpoint(name = "ServiceClientePort")
     public ServiceCliente getServiceClientePort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://cliente.pos.ifpb.edu.br/", "ServiceClientePort"), ServiceCliente.class, features);
+        return super.getPort(new QName("http://cliente.server.todeferias.soap.pos.pos.ifpb.edu.br/", "ServiceClientePort"), ServiceCliente.class, features);
     }
 
     private static URL __getWsdlLocation() {

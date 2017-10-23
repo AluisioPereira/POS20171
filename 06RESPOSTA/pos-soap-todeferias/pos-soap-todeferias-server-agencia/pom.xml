@@ -28,12 +28,12 @@
             <version>2.3.5.Final</version>
         </dependency>
         
-<!--                 https://mvnrepository.com/artifact/postgresql/postgresql 
+        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4.1208-jdbc42-atlassian-hosted</version>
-        </dependency>-->
+            <version>9.0-802.jdbc4</version>
+        </dependency>
 
         
         <dependency>
@@ -118,7 +118,7 @@
                 <executions>
                 
                 
-            <!-- comentario
+             
                     <execution>
                         <id>cliente</id>
                         <phase>generate-sources</phase>
@@ -128,7 +128,7 @@
                         <configuration>
                             <packageName>br.edu.ifpb.pos.cliente</packageName>
                             <wsdlUrls>
-                                <wsdlLocation>http://localhost:8080/pos-soap-todeferias-server-cliente/ServiceClienteService?wsdl</wsdlLocation>
+                                <wsdlLocation>http://localhost:8080/ServiceClienteService/ServiceCliente?WSDL</wsdlLocation>
                             </wsdlUrls> 
                             <verbose>true</verbose>
                             <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
@@ -143,6 +143,10 @@
                     </execution>
                     
                     
+                    
+                    
+                    
+                    
                     <execution>
                         <id>hotel</id>
                         <phase>generate-sources</phase>
@@ -152,7 +156,32 @@
                         <configuration>
                             <packageName>br.edu.ifpb.pos.hotel</packageName>
                             <wsdlUrls>
-                                <wsdlLocation>http://localhost:8080/pos-soap-todeferias-server-hotel/ServiceHotelService?wsdl</wsdlLocation>
+                                <wsdlLocation>http://localhost:8080/ServiceHotelService/ServiceHotel?WSDL</wsdlLocation>
+                            </wsdlUrls> 
+                            <verbose>true</verbose>
+                            <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+                            <target>2.1</target>
+                            <xnocompile>true</xnocompile>                           
+                            <extension>true</extension>
+                            <keep>false</keep>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                        </configuration>
+                    </execution>
+                    
+                    
+                    
+                    <execution>
+                        <id>reservaHotel</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <packageName>br.edu.ifpb.pos.reservaHotel</packageName>
+                            <wsdlUrls>
+                                <wsdlLocation>http://localhost:8080/ServiceReservaHotelService/ServiceReservaHotel?WSDL</wsdlLocation>
                             </wsdlUrls> 
                             <verbose>true</verbose>
                             <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
@@ -177,7 +206,7 @@
                         <configuration>
                             <packageName>br.edu.ifpb.pos.passagem</packageName>
                             <wsdlUrls>
-                                <wsdlLocation>http://localhost:8080/pos-soap-todeferias-server-passagem/ServicePassagemService?wsdl</wsdlLocation>
+                                <wsdlLocation>http://localhost:8080/ServicePassagemService/ServicePassagem?WSDL</wsdlLocation>
                             </wsdlUrls> 
                             <verbose>true</verbose>
                             <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
@@ -191,9 +220,32 @@
                         </configuration>
                     </execution>
                    
+                    <execution>
+                        <id>reservaPassagem</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <packageName>br.edu.ifpb.pos.reservaPassagem</packageName>
+                            <wsdlUrls>
+                                <wsdlLocation>http://localhost:8080/ServiceReservaPassagemService/ServiceReservaPassagem?WSDL</wsdlLocation>
+                            </wsdlUrls> 
+                            <verbose>true</verbose>
+                            <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+                            <target>2.1</target>
+                            <xnocompile>true</xnocompile>                           
+                            <extension>true</extension>
+                            <keep>false</keep>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                        </configuration>
+                    </execution>
             
             
-                    -->            
+            
+                                
                     
                 </executions>
                 <dependencies>

@@ -29,33 +29,11 @@ public interface ServicePassagem {
      * @param arg0
      */
     @WebMethod
-    @RequestWrapper(localName = "atualizarPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.AtualizarPassagem")
-    @ResponseWrapper(localName = "atualizarPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.AtualizarPassagemResponse")
-    public void atualizarPassagem(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Passagem arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "encontrarPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.EncontrarPassagem")
-    @ResponseWrapper(localName = "encontrarPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.EncontrarPassagemResponse")
-    public void encontrarPassagem(
+    @RequestWrapper(localName = "removerPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.RemoverPassagem")
+    @ResponseWrapper(localName = "removerPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.RemoverPassagemResponse")
+    public void removerPassagem(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<br.edu.ifpb.pos.passagem.Passagem>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarTodasPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.ListarTodasPassagem")
-    @ResponseWrapper(localName = "listarTodasPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.ListarTodasPassagemResponse")
-    public List<Passagem> listarTodasPassagem();
 
     /**
      * 
@@ -73,10 +51,35 @@ public interface ServicePassagem {
      * @param arg0
      */
     @WebMethod
-    @RequestWrapper(localName = "removerPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.RemoverPassagem")
-    @ResponseWrapper(localName = "removerPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.RemoverPassagemResponse")
-    public void removerPassagem(
+    @RequestWrapper(localName = "atualizarPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.AtualizarPassagem")
+    @ResponseWrapper(localName = "atualizarPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.AtualizarPassagemResponse")
+    public void atualizarPassagem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Passagem arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns br.edu.ifpb.pos.passagem.Passagem
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "encontrarPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.EncontrarPassagem")
+    @ResponseWrapper(localName = "encontrarPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.EncontrarPassagemResponse")
+    public Passagem encontrarPassagem(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<br.edu.ifpb.pos.passagem.Passagem>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarTodasPassagem", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.ListarTodasPassagem")
+    @ResponseWrapper(localName = "listarTodasPassagemResponse", targetNamespace = "http://passagem.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.passagem.ListarTodasPassagemResponse")
+    public List<Passagem> listarTodasPassagem();
 
 }

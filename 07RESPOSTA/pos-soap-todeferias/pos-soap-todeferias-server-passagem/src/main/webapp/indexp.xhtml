@@ -21,15 +21,9 @@
                     </div>
 
                     <div class="form-group " rows="3">
-                        <h:panelGrid  class="form-group" columns="2">
+                        <label class="col-sm-3 control-label" for="cpf">CPF do cliente</label>
 
-                            <h:outputLabel value="Cliente: ">
-                                <h:selectOneMenu value="#{controladorCadastroPassagem.clienteId.cpf}">
-                                    <f:selectItem itemLabel="Selecione um cliente"/>
-                                    <f:selectItems value="#{controladorCadastroPassagem.clienteSelect}"></f:selectItems>
-                                </h:selectOneMenu>
-                            </h:outputLabel>
-                        </h:panelGrid>
+                        <h:inputText value="#{controladorCadastroPassagem.clienteId.cpf}" id="cliente1"  class="form-control input-md" required="true" />
                     </div>
 
 

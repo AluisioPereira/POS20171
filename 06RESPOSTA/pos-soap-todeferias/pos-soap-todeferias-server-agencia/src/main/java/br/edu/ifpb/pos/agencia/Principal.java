@@ -5,10 +5,11 @@
  */
 package br.edu.ifpb.pos.agencia;
 
-import br.edu.ifpb.pos.agencia.domain.AgenciaId;
-import br.edu.ifpb.pos.agencia.domain.ClienteId;
-import br.edu.ifpb.pos.agencia.domain.HotelId;
-import br.edu.ifpb.pos.agencia.domain.PassagemId;
+import br.edu.ifpb.pos.domain.AgenciaId1;
+import br.edu.ifpb.pos.domain.ClienteId1;
+import br.edu.ifpb.pos.domain.HotelId1;
+import br.edu.ifpb.pos.domain.PassagemId1;
+
 
 /**
  *
@@ -18,13 +19,13 @@ public class Principal {
 
     public static void main(String[] args) {
         String codigo = "234##234";
-        ClienteId cid = new ClienteId("111.222.333-44");
+        ClienteId1 cid = new ClienteId1("111.222.333-44");
 
-        PassagemId pid = new PassagemId("01.111.0001/22");
+        PassagemId1 pid = new PassagemId1("01.111.0001/22");
 
-        HotelId hid = new HotelId("01.111.0001/22");
+        HotelId1 hid = new HotelId1("01.111.0001/22");
 
-        AgenciaId aid = new AgenciaId("01.111.0001/22");
+        AgenciaId1 aid = new AgenciaId1("01.111.0001/22");
 
         Pacote rp = new Pacote(codigo, cid, hid, pid, aid);
 

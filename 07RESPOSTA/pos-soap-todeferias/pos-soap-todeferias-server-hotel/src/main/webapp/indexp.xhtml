@@ -22,16 +22,11 @@
 
 
                     <div class="form-group " rows="3">
-                        <h:panelGrid  class="form-group" columns="2">
+                        <label class="col-sm-3 control-label" for="cpf">CPF do cliente</label>
 
-                            <h:outputLabel value="Cliente: ">
-                                <h:selectOneMenu value="#{controladorCadastroHotel.clienteId.cpf}">
-                                    <f:selectItem itemLabel="Selecione um cliente"/>
-                                    <f:selectItems value="#{controladorCadastroHotel.clienteSelect}"></f:selectItems>
-                                </h:selectOneMenu>
-                            </h:outputLabel>
-                        </h:panelGrid>
+                        <h:inputText value="#{controladorCadastroHotel.clienteId.cpf}" id="cliente1"  class="form-control input-md" required="true" />
                     </div>
+
 
                     <div class="form-group">
                         <h:commandButton action="#{controladorCadastroHotel.cadastrarRH()}" value="Cadastrar" styleClass="btn btn-success" />

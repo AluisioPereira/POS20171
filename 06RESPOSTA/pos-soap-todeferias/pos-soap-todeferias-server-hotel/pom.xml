@@ -26,6 +26,20 @@
             <version>2.5.2</version>
             <scope>provided</scope>
         </dependency>
+        
+        
+        
+        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.0-802.jdbc4</version>
+        </dependency>
+        
+        
+        
+        
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
@@ -91,7 +105,7 @@
             
             
             
-<!--            
+            
             
             <plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
@@ -107,7 +121,7 @@
                         <configuration>
                             <packageName>br.edu.ifpb.pos.cliente</packageName>
                             <wsdlUrls>
-                                <wsdlLocation>http://localhost:8080/pos-soap-todeferias-server-cliente/ServiceClienteService?wsdl</wsdlLocation>
+                                <wsdlLocation>http://localhost:8080/ServiceClienteService/ServiceCliente?WSDL</wsdlLocation>
                             </wsdlUrls> 
                             <verbose>true</verbose>
                             <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
@@ -131,7 +145,7 @@
                 </dependencies>
             </plugin>
             
-            -->
+            
             
             
             

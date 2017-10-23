@@ -7,11 +7,7 @@
 
         <div class="container-fluid">
             <h:form>
-
-                <br></br>
-                <rh></rh>
                 <fieldset>
-
 
                     <!-- Form Name -->
                     <legend>Novo Pacote</legend>
@@ -20,52 +16,28 @@
 
                     <!-- Text input-->
                     <div class="form-group " rows="3">
-                        <label class="col-sm-3 control-label" for="codigo">Código para o Pacote</label>
+                        <label class="col-sm-3 control-label" for="codigo">Código do Pacote</label>
 
                         <h:inputText value="#{controladorCadastroAgencia.codigo}" id="codigo1"  class="form-control input-md" required="true" />
                     </div>
 
                     <div class="form-group " rows="3">
-                        <h:panelGrid  class="form-group" columns="2">
+                        <label class="col-sm-3 control-label" for="cpf">CPF do cliente</label>
 
-                            <h:outputLabel value="Cliente: ">
-                                <h:selectOneMenu value="#{controladorCadastroAgencia.clienteId.cpf}">
-                                    <f:selectItem itemLabel="Selecione um cliente"/>
-                                    <f:selectItems value="#{controladorCadastroAgencia.clienteSelect}"></f:selectItems>
-                                </h:selectOneMenu>
-                            </h:outputLabel>
-                        </h:panelGrid>
-                    </div>
-
-
-                    <div class="form-group " rows="3">
-                        <h:panelGrid class="form-group" columns="2">
-
-                            <h:outputLabel value="Código da Passagem: ">
-                                <h:selectOneMenu value="#{controladorCadastroAgencia.passagemId.cnpjEmpresa}">
-                                    <f:selectItem itemLabel="selecione o código da passagem"/>
-                                    <f:selectItems value="#{controladorCadastroAgencia.passagemSelect}"></f:selectItems>
-                                </h:selectOneMenu>
-                            </h:outputLabel>
-                        </h:panelGrid>
+                        <h:inputText value="#{controladorCadastroAgencia.clienteId.cpf}" id="cliente1"  class="form-control input-md" required="true" />
                     </div>
 
                     <div class="form-group " rows="3">
+                        <label class="col-sm-3 control-label" for="codigopassagem">Código da Passgem</label>
 
-                        <h:panelGrid class="form-group" columns="2">
-                            <h:outputLabel  value="CNPJ do Hotel: ">
-                                <h:selectOneMenu  value="#{controladorCadastroAgencia.hotelId.cnpjHotel}">
-                                    <f:selectItem itemLabel="selecione o cnpj do hotel "/>
-                                    <f:selectItems value="#{controladorCadastroAgencia.hotelSelect}"></f:selectItems>
-                                </h:selectOneMenu>
-                            </h:outputLabel>
-                        </h:panelGrid>
-
-
+                        <h:inputText value="#{controladorCadastroAgencia.passagemId.cnpjEmpresa}" id="codigopassagem"  class="form-control input-md" required="true" />
                     </div>
 
+                    <div class="form-group " rows="3">
+                        <label class="col-sm-3 control-label" for="cnpjhotel">CNPJ do Hotel</label>
 
-
+                        <h:inputText value="#{controladorCadastroAgencia.hotelId.cnpjHotel}" id="cnpjhotel"  class="form-control input-md" required="true" />
+                    </div>
 
 
                     <div class="form-group">

@@ -2,6 +2,8 @@ D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03pro
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\cliente\ServiceCliente.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\hotel\RepositoryReservaHotel.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\cliente\AtualizarClienteResponse.java
+D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\hotel\domain\ClienteId.java
+D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\hotel\domain\HotelId.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\hotel\Principal.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\cliente\SalvarCliente.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\hotel\ReservaHotel.java
@@ -20,6 +22,4 @@ D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03pro
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\cliente\RemoverClienteResponse.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\cliente\package-info.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\cliente\RemoverCliente.java
-D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\domain\ClienteId.java
-D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\domain\HotelId.java
 D:\00CURSOS\00ADS2017.1\01POS\ATIVIDADES\08ate10102017atividadeAvalidativa\03projeto\pos-soap-todeferias\pos-soap-todeferias-server-hotel\src\main\java\br\edu\ifpb\pos\hotel\controler\ControladorCadastroHotel.java

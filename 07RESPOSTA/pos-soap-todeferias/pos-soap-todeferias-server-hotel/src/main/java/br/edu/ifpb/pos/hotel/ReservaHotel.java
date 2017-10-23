@@ -5,11 +5,10 @@
  */
 package br.edu.ifpb.pos.hotel;
 
-import br.edu.ifpb.pos.domain.ClienteId;
-import br.edu.ifpb.pos.domain.HotelId;
+import br.edu.ifpb.pos.hotel.domain.ClienteId;
+import br.edu.ifpb.pos.hotel.domain.HotelId;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,11 +23,11 @@ public class ReservaHotel implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-
+    
     private String codigo;
-    @Embedded
+    
     private ClienteId cliente;
-    @Embedded
+
     private HotelId hotel;
 
     public ReservaHotel() {
@@ -52,6 +51,7 @@ public class ReservaHotel implements Serializable {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+    
 
     public Long getId() {
         return id;
@@ -76,6 +76,9 @@ public class ReservaHotel implements Serializable {
     public void setHotel(HotelId hotel) {
         this.hotel = hotel;
     }
+    
+    
+    
 
     @Override
     public int hashCode() {
@@ -113,5 +116,7 @@ public class ReservaHotel implements Serializable {
         }
         return true;
     }
+
+  
 
 }
