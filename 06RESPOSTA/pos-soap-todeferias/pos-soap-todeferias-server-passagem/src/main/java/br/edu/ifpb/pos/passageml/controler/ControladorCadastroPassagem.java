@@ -196,7 +196,7 @@ public class ControladorCadastroPassagem implements Serializable {
     private Cliente clienteSelecionado = new Cliente();
 
     public List<SelectItem> getClienteSelect() {
-        if (this.clienteSelect == null) {
+//        if (this.clienteSelect == null) {
             clienteSelect = new ArrayList<>();
             List<Cliente> lista = listarCliente();
             System.out.println("Verfificou lista vazia");
@@ -208,7 +208,7 @@ public class ControladorCadastroPassagem implements Serializable {
                 }
 
             }
-        }
+//        }
         System.out.println("Preencheu valores...");
         return clienteSelect;
     }

@@ -363,7 +363,7 @@ public class ControladorCadastroAgencia implements Serializable {
     }
 
     public List<SelectItem> getClienteSelect() {
-        if (this.clienteSelect == null) {
+//        if (this.clienteSelect == null) {
             clienteSelect = new ArrayList<>();
             List<Cliente> lista = listarCliente();
             System.out.println("Verfificou lista vazia");
@@ -375,7 +375,7 @@ public class ControladorCadastroAgencia implements Serializable {
                 }
 
             }
-        }
+//        }
         System.out.println("Preencheu valores...");
         return clienteSelect;
     }
@@ -386,7 +386,7 @@ public class ControladorCadastroAgencia implements Serializable {
 
     public List<SelectItem> getPassagemSelect() {
 
-        if (this.passagemSelect == null) {
+//        if (this.passagemSelect == null) {
             passagemSelect = new ArrayList<>();
             List<Passagem> lista = listarPassagem();
             System.out.println("Verfificou lista vazia");
@@ -398,7 +398,7 @@ public class ControladorCadastroAgencia implements Serializable {
                 }
 
             }
-        }
+//        }
         return passagemSelect;
     }
 
@@ -415,7 +415,7 @@ public class ControladorCadastroAgencia implements Serializable {
     }
 
     public List<SelectItem> getHotelSelect() {
-        if (this.hotelSelect == null) {
+//        if (this.hotelSelect == null) {
             hotelSelect = new ArrayList<>();
             List<Hotel> lista = listarHotel();
             System.out.println("Verfificou lista vazia");
@@ -427,7 +427,7 @@ public class ControladorCadastroAgencia implements Serializable {
                 }
 
             }
-        }
+//        }
 
         return hotelSelect;
     }
