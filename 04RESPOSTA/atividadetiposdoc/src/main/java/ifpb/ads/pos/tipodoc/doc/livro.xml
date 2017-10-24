@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<livro 
+    xmlns="http://www.w3schools.com"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.w3schools.com livro.xsd">
+
+    
+    <titulo>Título do livro</titulo>
+    <autor>
+        <nome>Nome do autor</nome>
+        <nascimento>01/01/1981</nascimento>
+    </autor>
+    <data>01/01/2001</data> 
+    <ISBN>1234-5678</ISBN>
+    <editora>Nome da editora</editora>
+    
+</livro>
+

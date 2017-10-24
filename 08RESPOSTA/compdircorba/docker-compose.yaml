@@ -1,0 +1,26 @@
+version: "2"
+services:
+  registrydiscovery:
+    container_name: corbaregistrydiscovery
+    image: corbaregistrydiscovery
+    build: ./corbaregistrydiscovery
+    ports:
+      - "1051:1050"
+    expose:
+      - 1051
+  producer:
+    container_name: corbaproducer
+    image: corbaproducer
+    build: ./corbaproducer
+    links:
+      - "registrydiscovery:corbaregistrydiscovery"
+  consumer:
+    container_name: corbaconsumer
+    image: corbaconsumer
+    build: ./corbaconsumer
+    links:
+      - "registrydiscovery:corbaregistrydiscovery"
+networks:
+  default:
+    external:
+      name: compdircorba
