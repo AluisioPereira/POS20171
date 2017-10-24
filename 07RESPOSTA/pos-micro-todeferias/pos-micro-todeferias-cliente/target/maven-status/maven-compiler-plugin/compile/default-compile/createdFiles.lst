@@ -1,0 +1,6 @@
+service\ClienteService.class
+service\ApplicationConfig.class
+br\edu\ifpb\pos\cliente\Cliente.class
+service\AbstractFacade.class
+br\edu\ifpb\pos\cliente\Cliente_.class
+br\edu\ifpb\pos\cliente\controler\ControladorCadastroCliente.class
