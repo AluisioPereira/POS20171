@@ -28,11 +28,10 @@
             <version>2.3.5.Final</version>
         </dependency>
         
-        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
         <dependency>
-            <groupId>postgresql</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.0-802.jdbc4</version>
+            <version>9.4.1212.jre7</version>
         </dependency>
 
         

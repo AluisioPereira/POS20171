@@ -26,6 +26,17 @@ public interface ServiceCliente {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<br.edu.ifpb.pos.cliente.Cliente>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listarTodasCliente", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.ListarTodasCliente")
+    @ResponseWrapper(localName = "listarTodasClienteResponse", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.ListarTodasClienteResponse")
+    public List<Cliente> listarTodasCliente();
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns br.edu.ifpb.pos.cliente.Cliente
@@ -54,17 +65,6 @@ public interface ServiceCliente {
      * @param arg0
      */
     @WebMethod
-    @RequestWrapper(localName = "salvarCliente", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.SalvarCliente")
-    @ResponseWrapper(localName = "salvarClienteResponse", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.SalvarClienteResponse")
-    public void salvarCliente(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Cliente arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
     @RequestWrapper(localName = "removerCliente", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.RemoverCliente")
     @ResponseWrapper(localName = "removerClienteResponse", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.RemoverClienteResponse")
     public void removerCliente(
@@ -73,13 +73,13 @@ public interface ServiceCliente {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<br.edu.ifpb.pos.cliente.Cliente>
+     * @param arg0
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarTodasCliente", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.ListarTodasCliente")
-    @ResponseWrapper(localName = "listarTodasClienteResponse", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.ListarTodasClienteResponse")
-    public List<Cliente> listarTodasCliente();
+    @RequestWrapper(localName = "salvarCliente", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.SalvarCliente")
+    @ResponseWrapper(localName = "salvarClienteResponse", targetNamespace = "http://cliente.pos.ifpb.edu.br/", className = "br.edu.ifpb.pos.cliente.SalvarClienteResponse")
+    public void salvarCliente(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Cliente arg0);
 
 }
