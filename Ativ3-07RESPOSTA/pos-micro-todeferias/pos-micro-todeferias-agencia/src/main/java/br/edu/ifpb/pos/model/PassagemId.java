@@ -7,6 +7,7 @@ package br.edu.ifpb.pos.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import javax.persistence.Embeddable;
 import org.immutables.value.Value;
 
 /**
@@ -16,7 +17,8 @@ import org.immutables.value.Value;
 @Value.Immutable
 @JsonDeserialize(as = ImmutablePassagemId.class)
 @JsonSerialize(as = ImmutablePassagemId.class)
-public interface PassagemId {
+@Embeddable
+public interface PassagemId {    
     public Integer cnpjEmpresa();
 
 }

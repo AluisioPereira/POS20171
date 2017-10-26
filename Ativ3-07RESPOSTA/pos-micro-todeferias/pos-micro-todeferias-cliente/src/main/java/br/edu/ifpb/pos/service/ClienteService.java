@@ -26,6 +26,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Stateless
 @Path("/cliente")
+@Produces({MediaType.APPLICATION_JSON})
 public class ClienteService extends AbstractFacade<Cliente> {
 
     @PersistenceContext(unitName = "br.edu.ifpb.pos_pos-soap-todeferias-server-cliente_war_0.1PU")
@@ -37,14 +38,14 @@ public class ClienteService extends AbstractFacade<Cliente> {
 
     @POST
     @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void create(Cliente entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Integer id, Cliente entity) {
         super.edit(entity);
     }
@@ -57,21 +58,21 @@ public class ClienteService extends AbstractFacade<Cliente> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Cliente find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Cliente> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Cliente> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

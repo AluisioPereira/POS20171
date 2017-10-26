@@ -9,16 +9,16 @@ uri = "http://localhost:8080/pos-micro-todeferias-cliente/todeferiasc/cliente"
 
 ### Hotel
 ```
-uri = "http://localhost:8081/pos-micro-todeferias-hotel/todeferiash/hotel"
+uri = "http://localhost:8080/pos-micro-todeferias-hotel/todeferiash/hotel"
 ```	
 
 ### Passagem
 ```
-uri = "http://localhost:8082/pos-micro-todeferias-hotel/todeferiasp/passagem"
+uri = "http://localhost:8080/pos-micro-todeferias-passagem/todeferiasp/passagem"
 ```
 
 ### Agencia
 ```
-uri = "http://localhost:8083/pos-micro-todeferias-hotel/todeferiasa/agencia"
+uri = "http://localhost:8080/pos-micro-todeferias-agencia/todeferiasa/agencia"
 ```
 

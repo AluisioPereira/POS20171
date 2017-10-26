@@ -28,6 +28,12 @@
             <version>2.3.5.Final</version>
         </dependency>
         
+                
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-binding</artifactId>
+            <version>2.26</version>
+        </dependency>
         
         <dependency>
             <groupId>org.postgresql</groupId>

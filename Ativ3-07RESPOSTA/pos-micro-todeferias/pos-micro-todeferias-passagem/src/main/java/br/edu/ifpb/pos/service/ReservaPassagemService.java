@@ -25,7 +25,8 @@ import javax.ws.rs.core.MediaType;
  * @author ajp
  */
 @Stateless
-@Path("br.edu.ifpb.pos.passagem.reservapassagem")
+@Path("/reservapassagem")
+@Produces({MediaType.APPLICATION_JSON})
 public class ReservaPassagemService extends AbstractFacade<ReservaPassagem> {
 
     @PersistenceContext(unitName = "br.edu.ifpb.pos_pos-soap-todeferias-server-passagem_war_0.1PU")
@@ -37,14 +38,14 @@ public class ReservaPassagemService extends AbstractFacade<ReservaPassagem> {
 
     @POST
     @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void create(ReservaPassagem entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") int id, ReservaPassagem entity) {
         super.edit(entity);
     }
@@ -57,21 +58,21 @@ public class ReservaPassagemService extends AbstractFacade<ReservaPassagem> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public ReservaPassagem find(@PathParam("id") int id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<ReservaPassagem> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<ReservaPassagem> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

@@ -227,6 +227,7 @@ public class ControladorCadastroHotel implements Serializable {
                 System.out.println("Cliente: " + cliente.toString());
             }
 
+           
             return clientes;
         } catch (MapperException ex) {
             Logger.getLogger(ControladorCadastroHotel.class.getName()).log(Level.SEVERE, null, ex);

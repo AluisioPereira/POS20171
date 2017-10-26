@@ -82,12 +82,12 @@ public class ControladorCadastroAgencia implements Serializable {
     private final WebTarget rootc = clientc.target(uric);
 
     private final Mapper mapperh = new Mapper();
-    private final String urih = "http://localhost:8081/pos-micro-todeferias-hotel/todeferiash/hotel";
+    private final String urih = "http://localhost:8080/pos-micro-todeferias-hotel/todeferiash/hotel";
     private final Client clienth = ClientBuilder.newClient();
     private final WebTarget rooth = clienth.target(urih);
 
     private final Mapper mapperp = new Mapper();
-    private final String urip = "http://localhost:8082/pos-micro-todeferias-hotel/todeferiasp/passagem";
+    private final String urip = "http://localhost:8080/pos-micro-todeferias-passagem/todeferiasp/passagem";
     private final Client clientp = ClientBuilder.newClient();
     private final WebTarget rootp = clientp.target(urip);
 
@@ -131,7 +131,7 @@ public class ControladorCadastroAgencia implements Serializable {
     public void realizarReservaHotel(String codigo, Integer clieteId, HotelId hotelId) {
 
         try {
-            String recurso = "http://localhost:8081/pos-micro-todeferias-hotel/todeferiash/reservahotel";
+            String recurso = "http://localhost:8080/pos-micro-todeferias-hotel/todeferiash/reservahotel";
             Client client = ClientBuilder.newClient();
             WebTarget target = client.target(recurso);
 
@@ -142,7 +142,7 @@ public class ControladorCadastroAgencia implements Serializable {
             Response response = target.request().post(json);
 
             //atualizando hotel
-            String recursoh = "http://localhost:8081/pos-micro-todeferias-hotel/todeferiash/hotel";
+            String recursoh = "http://localhost:8080/pos-micro-todeferias-hotel/todeferiash/hotel";
             Client clienth = ClientBuilder.newClient();
             WebTarget targeth = clienth.target(recursoh).path("{id}");
 
@@ -321,11 +321,11 @@ public class ControladorCadastroAgencia implements Serializable {
 
         try {
 
-            Response response = rootp.request().get();
+            Response response = rooth.request().get();
             String json = response.readEntity(String.class);
             List<Hotel> hoteis;
 
-            hoteis = mapperp.toList(json, Hotel.class);
+            hoteis = mapperh.toList(json, Hotel.class);
             for (Hotel hotel : hoteis) {
                 System.out.println("Passagem : " + hotel.toString());
             }

@@ -26,6 +26,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Stateless
 @Path("/agencia")
+@Produces({MediaType.APPLICATION_JSON})
 public class AgenciaService extends AbstractFacade<Agencia> {
 
     @PersistenceContext(unitName = "br.edu.ifpb.pos_pos-soap-todeferias-server-agencia_war_0.1PU")
@@ -37,14 +38,14 @@ public class AgenciaService extends AbstractFacade<Agencia> {
 
     @POST
     @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void create(Agencia entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Integer id, Agencia entity) {
         super.edit(entity);
     }
@@ -57,21 +58,21 @@ public class AgenciaService extends AbstractFacade<Agencia> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Agencia find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Agencia> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Agencia> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

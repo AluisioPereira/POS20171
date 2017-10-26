@@ -26,6 +26,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Stateless
 @Path("/hotel")
+@Produces({MediaType.APPLICATION_JSON})
 public class HotelService extends AbstractFacade<Hotel> {
 
     @PersistenceContext(unitName = "br.edu.ifpb.pos_pos-soap-todeferias-server-hotel_war_0.1PU")
@@ -37,14 +38,14 @@ public class HotelService extends AbstractFacade<Hotel> {
 
     @POST
     @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void create(Hotel entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Integer id, Hotel entity) {
         super.edit(entity);
     }
@@ -57,7 +58,7 @@ public class HotelService extends AbstractFacade<Hotel> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Hotel find(@PathParam("id") Integer id) {
         return super.find(id);
     }
@@ -65,14 +66,14 @@ public class HotelService extends AbstractFacade<Hotel> {
 
     @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Hotel> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Hotel> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

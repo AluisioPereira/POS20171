@@ -26,6 +26,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Stateless
 @Path("/pacote")
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public class PacoteService extends AbstractFacade<Pacote> {
 
     @PersistenceContext(unitName = "br.edu.ifpb.pos_pos-soap-todeferias-server-agencia_war_0.1PU")
