@@ -1,5 +1,5 @@
 # Atividades da Disciplina, POS20171
-Repositório para entrega das atividades da disciplina de POS-2017.1 do curso de Analise e Desenvolvimento de Sistema (ADS) do IFPB, Campus Cajazeiras. 
+Repositório para entrega das atividades da disciplina de POS-2017.1 do curso de Análise e Desenvolvimento de Sistemas (ADS) do IFPB, Campus Cajazeiras. 
 #### Histórico das atividades
 #### Atividade Avaliativa - Práticas em aula
 Data          |   Versão    |               Descrição                                            |  Autor
